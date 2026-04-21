@@ -19,7 +19,7 @@ namespace ivs.system
         private void Products_Load(object sender, EventArgs e)
         {
             Mainclass.disable(LeftPanel);
-            re.ShowDropDownList("st_GetCatgoeryList", CatIdDD, "Name", "ID");
+            re.ShowDropDownList("st_GetCategoryList", CatIdDD, "Category", "CatID");
         }
 
         public override void AddBtn_Click(object sender, EventArgs e)
