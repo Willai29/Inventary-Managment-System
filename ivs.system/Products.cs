@@ -148,7 +148,14 @@ namespace ivs.system
                     ExDatePickerTxt.Value = Convert.ToDateTime(row.Cells["ExDateGv"].Value.ToString());
                 }
 
-                StatusDD.SelectedItem = row.Cells["StsGv"].Value.ToString();
+                if (row.Cells["StsGv"].Value.ToString() == "1")
+                {
+                    StatusDD.SelectedIndex = 0; // Active
+                }
+                else
+                {
+                    StatusDD.SelectedIndex = 1; // Inactive
+                }
             }
 
             Mainclass.disable(LeftPanel);
