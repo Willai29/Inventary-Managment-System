@@ -133,7 +133,10 @@ namespace ivs.system
                 ProID = Convert.ToInt32(row.Cells["IdGv"].Value.ToString());
                 PNameTxt.Text = row.Cells["NameGv"].Value.ToString();
                 BrTxt.Text = row.Cells["BarchorGv"].Value.ToString();
-                CatIdDD.SelectedValue = Convert.ToInt32(row.Cells["CatIDGV"].Value);
+                if (row.Cells["CatIDGV"].Value != DBNull.Value)
+                {
+                    CatIdDD.SelectedValue = Convert.ToInt32(row.Cells["CatIDGV"].Value);
+                }
                 PPrizeTxt.Text = row.Cells["PrizeGv"].Value.ToString();
 
                 if (row.Cells["ExDateGv"].FormattedValue.ToString() == "")
