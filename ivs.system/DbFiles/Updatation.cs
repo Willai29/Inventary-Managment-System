@@ -56,17 +56,19 @@ namespace ivs.system.DbFiles
 
             }
         }
-        public void updateProduct(int id, string barchor, string name,int catId, float prize, Int16 Sts, DateTime? exDate = null)
+        public void updateProduct(int id, string barcode, string name, int catId, float price, Int16 Sts, DateTime? exDate = null)
         {
             try
             {
                 SqlCommand cmd = new SqlCommand("st_updateProducts", Mainclass.con);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@id", id);
+
+                cmd.Parameters.AddWithValue("@Id", id);
+                cmd.Parameters.AddWithValue("@Barcode", barcode);
                 cmd.Parameters.AddWithValue("@Name", name);
-                cmd.Parameters.AddWithValue("@Barchor", barchor);
                 cmd.Parameters.AddWithValue("@CatId", catId);
-                cmd.Parameters.AddWithValue("@Prize",prize );
+                cmd.Parameters.AddWithValue("@Price", price);
+
                 if (exDate != null)
                 {
                     cmd.Parameters.AddWithValue("@ExpiryDate", exDate);
@@ -75,17 +77,23 @@ namespace ivs.system.DbFiles
                 {
                     cmd.Parameters.AddWithValue("@ExpiryDate", DBNull.Value);
                 }
+
                 cmd.Parameters.AddWithValue("@Status", Sts);
+
                 Mainclass.con.Open();
                 cmd.ExecuteNonQuery();
                 Mainclass.con.Close();
-                Mainclass.showMsg(" Update successfully ", "success", "success");
+
+                Mainclass.showMsg("Update successfully", "success", "success");
             }
             catch (Exception ex)
             {
-                Mainclass.con.Close();
-                Mainclass.showMsg(ex.Message, "Expection Error", "Error");
+                if (Mainclass.con.State == ConnectionState.Open)
+                {
+                    Mainclass.con.Close();
+                }
 
+                Mainclass.showMsg(ex.Message, "Exception Error", "Error");
             }
         }
 
