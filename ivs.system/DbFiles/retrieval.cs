@@ -219,6 +219,7 @@ namespace ivs.system.DbFiles
 
                 gv.AutoGenerateColumns = false;
                 gv.DataSource = tb;
+
             }
             catch (Exception ex)
             {
@@ -378,6 +379,8 @@ namespace ivs.system.DbFiles
                 ExdateGv.DataPropertyName = "ExDate";
                 StsGv.DataPropertyName = "Status";
 
+                gv.AutoGenerateColumns = false;   // ✅ VERY IMPORTANT
+                gv.DataSource = null;             // ✅ ADD THIS
                 gv.DataSource = tb;
             }
             catch (Exception ex)

@@ -58,6 +58,9 @@ namespace ivs.system
             this.PrizeGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ExDateGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StsGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.LeftPanel.SuspendLayout();
             this.rightPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BackBtn)).BeginInit();
@@ -66,6 +69,9 @@ namespace ivs.system
             // 
             // LeftPanel
             // 
+            this.LeftPanel.Controls.Add(this.label3);
+            this.LeftPanel.Controls.Add(this.label2);
+            this.LeftPanel.Controls.Add(this.comboBox1);
             this.LeftPanel.Controls.Add(this.ExDatePickerTxt);
             this.LeftPanel.Controls.Add(this.PPrizeErrorLbl);
             this.LeftPanel.Controls.Add(this.PPrizeTxt);
@@ -104,6 +110,9 @@ namespace ivs.system
             this.LeftPanel.Controls.SetChildIndex(this.PPrizeTxt, 0);
             this.LeftPanel.Controls.SetChildIndex(this.PPrizeErrorLbl, 0);
             this.LeftPanel.Controls.SetChildIndex(this.ExDatePickerTxt, 0);
+            this.LeftPanel.Controls.SetChildIndex(this.comboBox1, 0);
+            this.LeftPanel.Controls.SetChildIndex(this.label2, 0);
+            this.LeftPanel.Controls.SetChildIndex(this.label3, 0);
             // 
             // rightPanel
             // 
@@ -114,7 +123,6 @@ namespace ivs.system
             // WlcUserLbl
             // 
             this.WlcUserLbl.Size = new System.Drawing.Size(91, 56);
-            this.WlcUserLbl.Text = "Admin";
             // 
             // BackBtn
             // 
@@ -126,7 +134,7 @@ namespace ivs.system
             this.StatusDD.Items.AddRange(new object[] {
             "Active",
             "In-Active"});
-            this.StatusDD.Location = new System.Drawing.Point(6, 403);
+            this.StatusDD.Location = new System.Drawing.Point(6, 494);
             this.StatusDD.Name = "StatusDD";
             this.StatusDD.Size = new System.Drawing.Size(194, 28);
             this.StatusDD.TabIndex = 33;
@@ -145,7 +153,7 @@ namespace ivs.system
             // StatusLbl
             // 
             this.StatusLbl.AutoSize = true;
-            this.StatusLbl.Location = new System.Drawing.Point(6, 380);
+            this.StatusLbl.Location = new System.Drawing.Point(6, 471);
             this.StatusLbl.Name = "StatusLbl";
             this.StatusLbl.Size = new System.Drawing.Size(49, 20);
             this.StatusLbl.TabIndex = 38;
@@ -387,6 +395,37 @@ namespace ivs.system
             this.StsGv.Name = "StsGv";
             this.StsGv.ReadOnly = true;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Active",
+            "In-Active"});
+            this.comboBox1.Location = new System.Drawing.Point(3, 430);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(194, 28);
+            this.comboBox1.TabIndex = 48;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 398);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 20);
+            this.label2.TabIndex = 49;
+            this.label2.Text = "Quantity";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.Crimson;
+            this.label3.Location = new System.Drawing.Point(180, 461);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(15, 20);
+            this.label3.TabIndex = 50;
+            this.label3.Text = "*";
+            this.label3.Visible = false;
+            // 
             // Products
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -435,5 +474,8 @@ namespace ivs.system
         private System.Windows.Forms.DataGridViewTextBoxColumn PrizeGv;
         private System.Windows.Forms.DataGridViewTextBoxColumn ExDateGv;
         private System.Windows.Forms.DataGridViewTextBoxColumn StsGv;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
