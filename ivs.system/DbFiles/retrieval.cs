@@ -188,7 +188,7 @@ namespace ivs.system.DbFiles
             }
         }
 
-        public void showProducts(DataGridView gv, DataGridViewColumn IdGv, DataGridViewColumn BarchorGv, DataGridViewColumn NameGv, DataGridViewColumn CatIDGV, DataGridViewColumn CatNameGv, DataGridViewColumn PrizeGv, DataGridViewColumn ExDateGv, DataGridViewColumn StsGv, string data = null)
+        public void showProducts(DataGridView gv, DataGridViewColumn IdGv, DataGridViewColumn BarchorGv, DataGridViewColumn NameGv, DataGridViewColumn CatIDGV, DataGridViewColumn CatNameGv, DataGridViewColumn PrizeGv, DataGridViewColumn QtyGv, DataGridViewColumn ExDateGv, DataGridViewColumn StsGv, string data = null)
         {
             SqlCommand cmd;
             try
@@ -215,6 +215,7 @@ namespace ivs.system.DbFiles
                 CatNameGv.DataPropertyName = "CatName";
                 PrizeGv.DataPropertyName = "Price";
                 ExDateGv.DataPropertyName = "ExpiryDate";
+                QtyGv.DataPropertyName = "Quantity";
                 StsGv.DataPropertyName = "Status";
 
                 gv.AutoGenerateColumns = false;

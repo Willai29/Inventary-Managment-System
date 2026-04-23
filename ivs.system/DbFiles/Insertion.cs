@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace ivs.system
 {
@@ -61,7 +62,7 @@ namespace ivs.system
             }
         }
 
-        public void insertProduct(string barcode, string name, int catId, float price, Int16 sts, DateTime? exDate = null)
+        public void insertProduct(string barcode, string name, int catId, float price, Int16 sts, int quantity, string imagePath = "", DateTime? exDate = null)
         {
             try
             {
@@ -83,6 +84,23 @@ namespace ivs.system
                 }
 
                 cmd.Parameters.AddWithValue("@Status", sts);
+                cmd.Parameters.AddWithValue("@Quantity", quantity);
+
+                byte[] img = null;
+
+                if (!string.IsNullOrWhiteSpace(imagePath) && File.Exists(imagePath))
+                {
+                    img = File.ReadAllBytes(imagePath);
+                }
+
+                if (img != null)
+                {
+                    cmd.Parameters.AddWithValue("@ProductImage", img);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@ProductImage", DBNull.Value);
+                }
 
                 Mainclass.con.Open();
                 cmd.ExecuteNonQuery();

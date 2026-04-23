@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace ivs.system.DbFiles
 {
@@ -56,7 +57,7 @@ namespace ivs.system.DbFiles
 
             }
         }
-        public void updateProduct(int id, string barcode, string name, int catId, float price, Int16 Sts, DateTime? exDate = null)
+        public void updateProduct(int id, string barcode, string name, int catId, float price, Int16 sts, int quantity, string imagePath = "", byte[] existingImage = null, DateTime? exDate = null)
         {
             try
             {
@@ -78,13 +79,30 @@ namespace ivs.system.DbFiles
                     cmd.Parameters.AddWithValue("@ExpiryDate", DBNull.Value);
                 }
 
-                cmd.Parameters.AddWithValue("@Status", Sts);
+                cmd.Parameters.AddWithValue("@Status", sts);
+                cmd.Parameters.AddWithValue("@Quantity", quantity);
+
+                byte[] img = existingImage;
+
+                if (!string.IsNullOrWhiteSpace(imagePath) && File.Exists(imagePath))
+                {
+                    img = File.ReadAllBytes(imagePath);
+                }
+
+                if (img != null)
+                {
+                    cmd.Parameters.AddWithValue("@ProductImage", img);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@ProductImage", DBNull.Value);
+                }
 
                 Mainclass.con.Open();
                 cmd.ExecuteNonQuery();
                 Mainclass.con.Close();
 
-                Mainclass.showMsg("Update successfully", "success", "success");
+                Mainclass.showMsg("Update successfully", "Success", "success");
             }
             catch (Exception ex)
             {

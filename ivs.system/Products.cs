@@ -62,11 +62,11 @@ namespace ivs.system
                     Insertion i = new Insertion();
                     if (ExDatePickerTxt.Value.Date != DateTime.Now.Date)
                     {
-                        i.insertProduct(BrTxt.Text, PNameTxt.Text, Convert.ToInt32(CatIdDD.SelectedValue), Convert.ToSingle(PPrizeTxt.Text), Stat, ExDatePickerTxt.Value);
+                        i.insertProduct(BrTxt.Text, PNameTxt.Text, Convert.ToInt32(CatIdDD.SelectedValue), Convert.ToSingle(PPrizeTxt.Text), Stat, Convert.ToInt32(QtyTxt.Value), imagePath, ExDatePickerTxt.Value);
                     }
                     else
                     {
-                        i.insertProduct(BrTxt.Text, PNameTxt.Text, Convert.ToInt32(CatIdDD.SelectedValue), Convert.ToSingle(PPrizeTxt.Text), Stat);
+                        i.insertProduct(BrTxt.Text, PNameTxt.Text, Convert.ToInt32(CatIdDD.SelectedValue), Convert.ToSingle(PPrizeTxt.Text), Stat, Convert.ToInt32(QtyTxt.Value), imagePath);
                     }
                 }
                 else if (edit == 1)
@@ -77,16 +77,16 @@ namespace ivs.system
                         Updatation u = new Updatation();
                         if (ExDatePickerTxt.Value.Date != DateTime.Now.Date)
                         {
-                            u.updateProduct(ProID, BrTxt.Text, PNameTxt.Text, Convert.ToInt32(CatIdDD.SelectedValue), Convert.ToSingle(PPrizeTxt.Text), Stat, ExDatePickerTxt.Value);
+                            u.updateProduct(ProID, BrTxt.Text, PNameTxt.Text, Convert.ToInt32(CatIdDD.SelectedValue), Convert.ToSingle(PPrizeTxt.Text), Stat, Convert.ToInt32(QtyTxt.Value), imagePath, currentImage, ExDatePickerTxt.Value);
                         }
                         else
                         {
-                            u.updateProduct(ProID, BrTxt.Text, PNameTxt.Text, Convert.ToInt32(CatIdDD.SelectedValue), Convert.ToSingle(PPrizeTxt.Text), Stat);
+                            u.updateProduct(ProID, BrTxt.Text, PNameTxt.Text, Convert.ToInt32(CatIdDD.SelectedValue), Convert.ToSingle(PPrizeTxt.Text), Stat, Convert.ToInt32(QtyTxt.Value), imagePath, currentImage);
                         }
                     }
                 }
 
-                re.showProducts(Product_dataGridView, IdGv, BarchorGv, NameGv, CatIDGV, CatNameGv, PrizeGv, ExDateGv, StsGv);
+                re.showProducts(Product_dataGridView, IdGv, BarchorGv, NameGv, CatIDGV, CatNameGv, PrizeGv, QtyGv, ExDateGv, StsGv);
             }
 
             Mainclass.disable_reset(LeftPanel);
@@ -101,7 +101,7 @@ namespace ivs.system
                 delRecord.deleting(ProID, "st_DeleteProduct", "@Id");
             }
 
-            re.showProducts(Product_dataGridView, IdGv, BarchorGv, NameGv, CatIDGV, CatNameGv, PrizeGv, ExDateGv, StsGv);
+            re.showProducts(Product_dataGridView, IdGv, BarchorGv, NameGv, CatIDGV, CatNameGv, PrizeGv, QtyGv, ExDateGv, StsGv);
             Mainclass.disable(LeftPanel);
         }
 
@@ -113,7 +113,7 @@ namespace ivs.system
 
         public override void viewBtn_Click(object sender, EventArgs e)
         {
-            re.showProducts(Product_dataGridView, IdGv, BarchorGv, NameGv, CatIDGV, CatNameGv, PrizeGv, ExDateGv, StsGv);
+            re.showProducts(Product_dataGridView, IdGv, BarchorGv, NameGv, CatIDGV, CatNameGv, PrizeGv, QtyGv, ExDateGv, StsGv);
             Mainclass.disable_reset(LeftPanel);
         }
 
@@ -121,11 +121,11 @@ namespace ivs.system
         {
             if (searchtxt.Text != "")
             {
-                re.showProducts(Product_dataGridView, IdGv, BarchorGv, NameGv, CatIDGV, CatNameGv, PrizeGv, ExDateGv, StsGv, searchtxt.Text);
+                re.showProducts(Product_dataGridView, IdGv, BarchorGv, NameGv, CatIDGV, CatNameGv, PrizeGv, QtyGv, ExDateGv, StsGv, searchtxt.Text);
             }
             else
             {
-                re.showProducts(Product_dataGridView, IdGv, BarchorGv, NameGv, CatIDGV, CatNameGv, PrizeGv, ExDateGv, StsGv);
+                re.showProducts(Product_dataGridView, IdGv, BarchorGv, NameGv, CatIDGV, CatNameGv, PrizeGv, QtyGv, ExDateGv, StsGv);
             }
         }
 

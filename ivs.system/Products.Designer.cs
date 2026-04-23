@@ -29,8 +29,8 @@ namespace ivs.system
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.StatusDD = new System.Windows.Forms.ComboBox();
             this.StatusErrorLbl = new System.Windows.Forms.Label();
             this.StatusLbl = new System.Windows.Forms.Label();
@@ -50,6 +50,11 @@ namespace ivs.system
             this.PPrizeLbl = new System.Windows.Forms.Label();
             this.ExDatePickerTxt = new System.Windows.Forms.DateTimePicker();
             this.Product_dataGridView = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.QtyTxt = new System.Windows.Forms.NumericUpDown();
+            this.productImagePB = new System.Windows.Forms.PictureBox();
+            this.browseBtn = new System.Windows.Forms.Button();
             this.IdGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BarchorGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,12 +62,8 @@ namespace ivs.system
             this.CatNameGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrizeGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ExDateGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QtyGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StsGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.QtyTxt = new System.Windows.Forms.NumericUpDown();
-            this.productImagePB = new System.Windows.Forms.PictureBox();
-            this.browseBtn = new System.Windows.Forms.Button();
             this.LeftPanel.SuspendLayout();
             this.rightPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BackBtn)).BeginInit();
@@ -323,14 +324,14 @@ namespace ivs.system
             this.Product_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Product_dataGridView.BackgroundColor = System.Drawing.Color.White;
             this.Product_dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Product_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Product_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.Product_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Product_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IdGv,
@@ -340,15 +341,16 @@ namespace ivs.system
             this.CatNameGv,
             this.PrizeGv,
             this.ExDateGv,
+            this.QtyGv,
             this.StsGv});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GrayText;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Product_dataGridView.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GrayText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Product_dataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.Product_dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Product_dataGridView.Location = new System.Drawing.Point(0, 106);
             this.Product_dataGridView.Name = "Product_dataGridView";
@@ -359,56 +361,6 @@ namespace ivs.system
             this.Product_dataGridView.TabIndex = 6;
             this.Product_dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Product_dataGridView_CellClick);
             this.Product_dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Product_dataGridView_CellContentClick);
-            // 
-            // IdGv
-            // 
-            this.IdGv.HeaderText = "ID";
-            this.IdGv.Name = "IdGv";
-            this.IdGv.ReadOnly = true;
-            this.IdGv.Visible = false;
-            // 
-            // BarchorGv
-            // 
-            this.BarchorGv.HeaderText = "Barcode";
-            this.BarchorGv.Name = "BarchorGv";
-            this.BarchorGv.ReadOnly = true;
-            // 
-            // NameGv
-            // 
-            this.NameGv.HeaderText = "Product Name";
-            this.NameGv.Name = "NameGv";
-            this.NameGv.ReadOnly = true;
-            // 
-            // CatIDGV
-            // 
-            this.CatIDGV.HeaderText = "CatID";
-            this.CatIDGV.Name = "CatIDGV";
-            this.CatIDGV.ReadOnly = true;
-            this.CatIDGV.Visible = false;
-            // 
-            // CatNameGv
-            // 
-            this.CatNameGv.HeaderText = "Catagory";
-            this.CatNameGv.Name = "CatNameGv";
-            this.CatNameGv.ReadOnly = true;
-            // 
-            // PrizeGv
-            // 
-            this.PrizeGv.HeaderText = "Prize";
-            this.PrizeGv.Name = "PrizeGv";
-            this.PrizeGv.ReadOnly = true;
-            // 
-            // ExDateGv
-            // 
-            this.ExDateGv.HeaderText = "Expiry Date";
-            this.ExDateGv.Name = "ExDateGv";
-            this.ExDateGv.ReadOnly = true;
-            // 
-            // StsGv
-            // 
-            this.StsGv.HeaderText = "Status";
-            this.StsGv.Name = "StsGv";
-            this.StsGv.ReadOnly = true;
             // 
             // label2
             // 
@@ -464,6 +416,62 @@ namespace ivs.system
             this.browseBtn.UseVisualStyleBackColor = false;
             this.browseBtn.Click += new System.EventHandler(this.browseBtn_Click);
             // 
+            // IdGv
+            // 
+            this.IdGv.HeaderText = "ID";
+            this.IdGv.Name = "IdGv";
+            this.IdGv.ReadOnly = true;
+            this.IdGv.Visible = false;
+            // 
+            // BarchorGv
+            // 
+            this.BarchorGv.HeaderText = "Barcode";
+            this.BarchorGv.Name = "BarchorGv";
+            this.BarchorGv.ReadOnly = true;
+            // 
+            // NameGv
+            // 
+            this.NameGv.HeaderText = "Product Name";
+            this.NameGv.Name = "NameGv";
+            this.NameGv.ReadOnly = true;
+            // 
+            // CatIDGV
+            // 
+            this.CatIDGV.HeaderText = "CatID";
+            this.CatIDGV.Name = "CatIDGV";
+            this.CatIDGV.ReadOnly = true;
+            this.CatIDGV.Visible = false;
+            // 
+            // CatNameGv
+            // 
+            this.CatNameGv.HeaderText = "Catagory";
+            this.CatNameGv.Name = "CatNameGv";
+            this.CatNameGv.ReadOnly = true;
+            // 
+            // PrizeGv
+            // 
+            this.PrizeGv.HeaderText = "Prize";
+            this.PrizeGv.Name = "PrizeGv";
+            this.PrizeGv.ReadOnly = true;
+            // 
+            // ExDateGv
+            // 
+            this.ExDateGv.HeaderText = "Expiry Date";
+            this.ExDateGv.Name = "ExDateGv";
+            this.ExDateGv.ReadOnly = true;
+            // 
+            // QtyGv
+            // 
+            this.QtyGv.HeaderText = "Quantity";
+            this.QtyGv.Name = "QtyGv";
+            this.QtyGv.ReadOnly = true;
+            // 
+            // StsGv
+            // 
+            this.StsGv.HeaderText = "Status";
+            this.StsGv.Name = "StsGv";
+            this.StsGv.ReadOnly = true;
+            // 
             // Products
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -507,6 +515,11 @@ namespace ivs.system
         private System.Windows.Forms.Label PNameLbl;
         private System.Windows.Forms.DateTimePicker ExDatePickerTxt;
         private System.Windows.Forms.DataGridView Product_dataGridView;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown QtyTxt;
+        private System.Windows.Forms.Button browseBtn;
+        private System.Windows.Forms.PictureBox productImagePB;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdGv;
         private System.Windows.Forms.DataGridViewTextBoxColumn BarchorGv;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameGv;
@@ -514,11 +527,7 @@ namespace ivs.system
         private System.Windows.Forms.DataGridViewTextBoxColumn CatNameGv;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrizeGv;
         private System.Windows.Forms.DataGridViewTextBoxColumn ExDateGv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QtyGv;
         private System.Windows.Forms.DataGridViewTextBoxColumn StsGv;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown QtyTxt;
-        private System.Windows.Forms.Button browseBtn;
-        private System.Windows.Forms.PictureBox productImagePB;
     }
 }
