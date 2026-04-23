@@ -24,8 +24,6 @@ namespace ivs.system.DbFiles
                 using (SqlCommand cmd = new SqlCommand("st_GetUserDetails", Mainclass.con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-
-                    // FIXED PARAMETER NAMES
                     cmd.Parameters.AddWithValue("@username", name);
                     cmd.Parameters.AddWithValue("@pass", password);
 
@@ -44,7 +42,7 @@ namespace ivs.system.DbFiles
                             {
                                 _UId = Convert.ToInt32(dr["Id"].ToString());
                                 _Pass = dr["Password"].ToString();
-                                _UName = dr["Username"].ToString();   // FIXED
+                                _UName = dr["Username"].ToString();
                                 _Username = dr["Username"].ToString();
                             }
                         }
@@ -80,9 +78,11 @@ namespace ivs.system.DbFiles
                 SqlDataAdapter dt = new SqlDataAdapter(cmd);
                 DataTable tb = new DataTable();
                 dt.Fill(tb);
+
                 DataRow dr = tb.NewRow();
                 dr.ItemArray = new object[] { 0, "Select ...." };
                 tb.Rows.InsertAt(dr, 0);
+
                 cb.DisplayMember = DisplayMember;
                 cb.ValueMember = ValueMember;
                 cb.DataSource = tb;
@@ -102,12 +102,15 @@ namespace ivs.system.DbFiles
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue(param1, val1);
                 cmd.Parameters.AddWithValue(param2, val2);
+
                 SqlDataAdapter dt = new SqlDataAdapter(cmd);
                 DataTable tb = new DataTable();
                 dt.Fill(tb);
+
                 DataRow dr = tb.NewRow();
                 dr.ItemArray = new object[] { 0, "Select ...." };
                 tb.Rows.InsertAt(dr, 0);
+
                 cb.DisplayMember = DisplayMember;
                 cb.ValueMember = ValueMember;
                 cb.DataSource = tb;
@@ -137,12 +140,14 @@ namespace ivs.system.DbFiles
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable tb = new DataTable();
                 da.Fill(tb);
-                U_IdGv.DataPropertyName = tb.Columns["ID"].ToString();
-                U_NameGv.DataPropertyName = tb.Columns["Name"].ToString();
-                U_EmailGv.DataPropertyName = tb.Columns["Email"].ToString();
-                passGv.DataPropertyName = tb.Columns["Password"].ToString();
-                U_UsernameGv.DataPropertyName = tb.Columns["Username"].ToString();
-                U_StsGv.DataPropertyName = tb.Columns["Status"].ToString();
+
+                U_IdGv.DataPropertyName = "ID";
+                U_NameGv.DataPropertyName = "Name";
+                U_EmailGv.DataPropertyName = "Email";
+                passGv.DataPropertyName = "Password";
+                U_UsernameGv.DataPropertyName = "Username";
+                U_StsGv.DataPropertyName = "Status";
+
                 gv.DataSource = tb;
             }
             catch (Exception ex)
@@ -170,9 +175,11 @@ namespace ivs.system.DbFiles
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable tb = new DataTable();
                 da.Fill(tb);
-                IdGv.DataPropertyName = tb.Columns["ID"].ToString();
-                NameGv.DataPropertyName = tb.Columns["Name"].ToString();
-                StsGv.DataPropertyName = tb.Columns["Status"].ToString();
+
+                IdGv.DataPropertyName = "ID";
+                NameGv.DataPropertyName = "Name";
+                StsGv.DataPropertyName = "Status";
+
                 gv.DataSource = tb;
             }
             catch (Exception ex)
@@ -200,14 +207,17 @@ namespace ivs.system.DbFiles
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable tb = new DataTable();
                 da.Fill(tb);
-                IdGv.DataPropertyName = tb.Columns["ID"].ToString();
-                BarchorGv.DataPropertyName = tb.Columns["Barchor"].ToString();
-                NameGv.DataPropertyName = tb.Columns["Name"].ToString();
-                CatNameGv.DataPropertyName = tb.Columns["CatName"].ToString();
-                CatIDGV.DataPropertyName = tb.Columns["CatId"].ToString();
-                ExDateGv.DataPropertyName = tb.Columns["ExpiryDate"].ToString();
-                PrizeGv.DataPropertyName = tb.Columns["Prize"].ToString();
-                StsGv.DataPropertyName = tb.Columns["Status"].ToString();
+
+                IdGv.DataPropertyName = "Id";
+                BarchorGv.DataPropertyName = "Barcode";
+                NameGv.DataPropertyName = "Name";
+                CatIDGV.DataPropertyName = "CatId";
+                CatNameGv.DataPropertyName = "CatName";
+                PrizeGv.DataPropertyName = "Price";
+                ExDateGv.DataPropertyName = "ExpiryDate";
+                StsGv.DataPropertyName = "Status";
+
+                gv.AutoGenerateColumns = false;
                 gv.DataSource = tb;
             }
             catch (Exception ex)
@@ -235,14 +245,16 @@ namespace ivs.system.DbFiles
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable tb = new DataTable();
                 da.Fill(tb);
-                IdGv.DataPropertyName = tb.Columns["ID"].ToString();
-                CompGv.DataPropertyName = tb.Columns["Company"].ToString();
-                EmpNameGv.DataPropertyName = tb.Columns["Employee"].ToString();
-                AddressGv.DataPropertyName = tb.Columns["Address"].ToString();
-                NTNGv.DataPropertyName = tb.Columns["NTN"].ToString();
-                Phone1Gv.DataPropertyName = tb.Columns["Phone1"].ToString();
-                Phone2Gv.DataPropertyName = tb.Columns["Phone2"].ToString();
-                StsGv.DataPropertyName = tb.Columns["Status"].ToString();
+
+                IdGv.DataPropertyName = "ID";
+                CompGv.DataPropertyName = "Company";
+                EmpNameGv.DataPropertyName = "Employee";
+                AddressGv.DataPropertyName = "Address";
+                NTNGv.DataPropertyName = "NTN";
+                Phone1Gv.DataPropertyName = "Phone1";
+                Phone2Gv.DataPropertyName = "Phone2";
+                StsGv.DataPropertyName = "Status";
+
                 gv.DataSource = tb;
             }
             catch (Exception ex)
@@ -258,8 +270,10 @@ namespace ivs.system.DbFiles
                 SqlCommand cmd = new SqlCommand("st_getProductDataWSRBarchode", Mainclass.con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@barcode", barcode);
+
                 Mainclass.con.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
+
                 if (dr.HasRows)
                 {
                     while (dr.Read())
@@ -270,6 +284,7 @@ namespace ivs.system.DbFiles
                         prodArr[3] = dr[3].ToString();
                     }
                 }
+
                 Mainclass.con.Close();
             }
             catch (Exception ex)
@@ -278,6 +293,7 @@ namespace ivs.system.DbFiles
                 {
                     Mainclass.con.Close();
                 }
+
                 Mainclass.showMsg(ex.Message, "Error", "Error");
             }
 
@@ -291,17 +307,19 @@ namespace ivs.system.DbFiles
             {
                 cmd = new SqlCommand("st_getPurInvDetailWRTPurInvID", Mainclass.con);
                 cmd.Parameters.AddWithValue("@id", PurInvId);
-
                 cmd.CommandType = CommandType.StoredProcedure;
+
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable tb = new DataTable();
                 da.Fill(tb);
-                mPurInvDtlIdGv.DataPropertyName = tb.Columns["PurInvDtl_Id"].ToString();
-                proIdGv.DataPropertyName = tb.Columns["ProId"].ToString();
-                ProductGv.DataPropertyName = tb.Columns["Product"].ToString();
-                PrizeGv.DataPropertyName = tb.Columns["Prize"].ToString();
-                QtyGv.DataPropertyName = tb.Columns["Quatity"].ToString();
-                TotalAmountGv.DataPropertyName = tb.Columns[""].ToString();
+
+                mPurInvDtlIdGv.DataPropertyName = "PurInvDtl_Id";
+                proIdGv.DataPropertyName = "ProId";
+                ProductGv.DataPropertyName = "Product";
+                PrizeGv.DataPropertyName = "Prize";
+                QtyGv.DataPropertyName = "Quatity";
+                TotalAmountGv.DataPropertyName = "";
+
                 gv.DataSource = tb;
             }
             catch (Exception ex)
@@ -319,6 +337,7 @@ namespace ivs.system.DbFiles
                 SqlCommand cmd = new SqlCommand("st_getProStockQty", Mainclass.con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@pro_Id", ProId);
+
                 Mainclass.con.Open();
                 ProQtyCount = cmd.ExecuteScalar();
                 Mainclass.con.Close();
@@ -329,8 +348,10 @@ namespace ivs.system.DbFiles
                 {
                     Mainclass.con.Close();
                 }
+
                 Mainclass.showMsg(ex.Message, "Expection Error", "Error");
             }
+
             return ProQtyCount;
         }
 
@@ -340,21 +361,23 @@ namespace ivs.system.DbFiles
             try
             {
                 cmd = new SqlCommand("st_GetStocksData", Mainclass.con);
-
                 cmd.CommandType = CommandType.StoredProcedure;
+
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable tb = new DataTable();
                 da.Fill(tb);
-                stkIdGv.DataPropertyName = tb.Columns["stk_Id"].ToString();
-                ProIdGv.DataPropertyName = tb.Columns["ProId"].ToString();
-                ProductGv.DataPropertyName = tb.Columns["Product"].ToString();
-                PrizeGv.DataPropertyName = tb.Columns["Prize"].ToString();
-                QtyGv.DataPropertyName = tb.Columns["Qty"].ToString();
-                TotalAmountGv.DataPropertyName = tb.Columns["Total Amount"].ToString();
-                BarcodeGv.DataPropertyName = tb.Columns["Barcode"].ToString();
-                Catgoery.DataPropertyName = tb.Columns["Catgory"].ToString();
-                ExdateGv.DataPropertyName = tb.Columns["ExDate"].ToString();
-                StsGv.DataPropertyName = tb.Columns["Status"].ToString();
+
+                stkIdGv.DataPropertyName = "stk_Id";
+                ProIdGv.DataPropertyName = "ProId";
+                ProductGv.DataPropertyName = "Product";
+                PrizeGv.DataPropertyName = "Prize";
+                QtyGv.DataPropertyName = "Qty";
+                TotalAmountGv.DataPropertyName = "Total Amount";
+                BarcodeGv.DataPropertyName = "Barcode";
+                Catgoery.DataPropertyName = "Catgory";
+                ExdateGv.DataPropertyName = "ExDate";
+                StsGv.DataPropertyName = "Status";
+
                 gv.DataSource = tb;
             }
             catch (Exception ex)

@@ -94,7 +94,7 @@ namespace ivs.system
             if (dr == DialogResult.Yes)
             {
                 Deletion delRecord = new Deletion();
-                delRecord.deleting(ProID, "st_DeleteProduct", "@id");
+                delRecord.deleting(ProID, "st_DeleteProduct", "@Id");
             }
 
             re.showProducts(Product_dataGridView, IdGv, BarchorGv, NameGv, CatIDGV, CatNameGv, PrizeGv, ExDateGv, StsGv);
