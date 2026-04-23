@@ -1,6 +1,8 @@
 ﻿using ivs.system.DbFiles;
 using System;
 using System.Windows.Forms;
+using System.Drawing;
+using System.IO;
 
 namespace ivs.system
 {
@@ -10,6 +12,8 @@ namespace ivs.system
         short Stat;
         int ProID;
         retrieval re = new retrieval();
+        string imagePath = "";
+        byte[] currentImage = null;
 
         public Products()
         {
@@ -164,6 +168,23 @@ namespace ivs.system
         private void Product_dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void LeftPanel_Scroll(object sender, ScrollEventArgs e)
+        {
+
+        }
+
+        private void browseBtn_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                imagePath = ofd.FileName;
+                productImagePB.Image = Image.FromFile(imagePath);
+            }
         }
     }
 }

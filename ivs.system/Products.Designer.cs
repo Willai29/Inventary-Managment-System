@@ -29,8 +29,8 @@ namespace ivs.system
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.StatusDD = new System.Windows.Forms.ComboBox();
             this.StatusErrorLbl = new System.Windows.Forms.Label();
             this.StatusLbl = new System.Windows.Forms.Label();
@@ -58,20 +58,31 @@ namespace ivs.system
             this.PrizeGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ExDateGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StsGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.QtyTxt = new System.Windows.Forms.NumericUpDown();
+            this.productImagePB = new System.Windows.Forms.PictureBox();
+            this.browseBtn = new System.Windows.Forms.Button();
             this.LeftPanel.SuspendLayout();
             this.rightPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BackBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Product_dataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.QtyTxt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productImagePB)).BeginInit();
             this.SuspendLayout();
+            // 
+            // panel2
+            // 
+            this.panel2.Size = new System.Drawing.Size(208, 50);
             // 
             // LeftPanel
             // 
+            this.LeftPanel.AutoScroll = true;
+            this.LeftPanel.Controls.Add(this.browseBtn);
+            this.LeftPanel.Controls.Add(this.productImagePB);
+            this.LeftPanel.Controls.Add(this.QtyTxt);
             this.LeftPanel.Controls.Add(this.label3);
             this.LeftPanel.Controls.Add(this.label2);
-            this.LeftPanel.Controls.Add(this.comboBox1);
             this.LeftPanel.Controls.Add(this.ExDatePickerTxt);
             this.LeftPanel.Controls.Add(this.PPrizeErrorLbl);
             this.LeftPanel.Controls.Add(this.PPrizeTxt);
@@ -90,8 +101,8 @@ namespace ivs.system
             this.LeftPanel.Controls.Add(this.StatusLbl);
             this.LeftPanel.Controls.Add(this.ExDatePickerErrorLbl);
             this.LeftPanel.Controls.Add(this.ExDatePickerLbl);
-            this.LeftPanel.Size = new System.Drawing.Size(200, 748);
-            this.LeftPanel.Controls.SetChildIndex(this.panel2, 0);
+            this.LeftPanel.Size = new System.Drawing.Size(208, 749);
+            this.LeftPanel.Scroll += new System.Windows.Forms.ScrollEventHandler(this.LeftPanel_Scroll);
             this.LeftPanel.Controls.SetChildIndex(this.ExDatePickerLbl, 0);
             this.LeftPanel.Controls.SetChildIndex(this.ExDatePickerErrorLbl, 0);
             this.LeftPanel.Controls.SetChildIndex(this.StatusLbl, 0);
@@ -110,14 +121,18 @@ namespace ivs.system
             this.LeftPanel.Controls.SetChildIndex(this.PPrizeTxt, 0);
             this.LeftPanel.Controls.SetChildIndex(this.PPrizeErrorLbl, 0);
             this.LeftPanel.Controls.SetChildIndex(this.ExDatePickerTxt, 0);
-            this.LeftPanel.Controls.SetChildIndex(this.comboBox1, 0);
             this.LeftPanel.Controls.SetChildIndex(this.label2, 0);
             this.LeftPanel.Controls.SetChildIndex(this.label3, 0);
+            this.LeftPanel.Controls.SetChildIndex(this.QtyTxt, 0);
+            this.LeftPanel.Controls.SetChildIndex(this.panel2, 0);
+            this.LeftPanel.Controls.SetChildIndex(this.productImagePB, 0);
+            this.LeftPanel.Controls.SetChildIndex(this.browseBtn, 0);
             // 
             // rightPanel
             // 
             this.rightPanel.Controls.Add(this.Product_dataGridView);
-            this.rightPanel.Size = new System.Drawing.Size(1011, 748);
+            this.rightPanel.Location = new System.Drawing.Point(208, 0);
+            this.rightPanel.Size = new System.Drawing.Size(895, 749);
             this.rightPanel.Controls.SetChildIndex(this.Product_dataGridView, 0);
             // 
             // WlcUserLbl
@@ -134,7 +149,7 @@ namespace ivs.system
             this.StatusDD.Items.AddRange(new object[] {
             "Active",
             "In-Active"});
-            this.StatusDD.Location = new System.Drawing.Point(6, 494);
+            this.StatusDD.Location = new System.Drawing.Point(3, 592);
             this.StatusDD.Name = "StatusDD";
             this.StatusDD.Size = new System.Drawing.Size(194, 28);
             this.StatusDD.TabIndex = 33;
@@ -143,7 +158,7 @@ namespace ivs.system
             // 
             this.StatusErrorLbl.AutoSize = true;
             this.StatusErrorLbl.ForeColor = System.Drawing.Color.Crimson;
-            this.StatusErrorLbl.Location = new System.Drawing.Point(180, 380);
+            this.StatusErrorLbl.Location = new System.Drawing.Point(177, 504);
             this.StatusErrorLbl.Name = "StatusErrorLbl";
             this.StatusErrorLbl.Size = new System.Drawing.Size(15, 20);
             this.StatusErrorLbl.TabIndex = 37;
@@ -153,7 +168,7 @@ namespace ivs.system
             // StatusLbl
             // 
             this.StatusLbl.AutoSize = true;
-            this.StatusLbl.Location = new System.Drawing.Point(6, 471);
+            this.StatusLbl.Location = new System.Drawing.Point(3, 569);
             this.StatusLbl.Name = "StatusLbl";
             this.StatusLbl.Size = new System.Drawing.Size(49, 20);
             this.StatusLbl.TabIndex = 38;
@@ -163,7 +178,7 @@ namespace ivs.system
             // 
             this.ExDatePickerErrorLbl.AutoSize = true;
             this.ExDatePickerErrorLbl.ForeColor = System.Drawing.Color.Crimson;
-            this.ExDatePickerErrorLbl.Location = new System.Drawing.Point(180, 274);
+            this.ExDatePickerErrorLbl.Location = new System.Drawing.Point(177, 398);
             this.ExDatePickerErrorLbl.Name = "ExDatePickerErrorLbl";
             this.ExDatePickerErrorLbl.Size = new System.Drawing.Size(15, 20);
             this.ExDatePickerErrorLbl.TabIndex = 34;
@@ -173,7 +188,7 @@ namespace ivs.system
             // ExDatePickerLbl
             // 
             this.ExDatePickerLbl.AutoSize = true;
-            this.ExDatePickerLbl.Location = new System.Drawing.Point(6, 274);
+            this.ExDatePickerLbl.Location = new System.Drawing.Point(3, 398);
             this.ExDatePickerLbl.Name = "ExDatePickerLbl";
             this.ExDatePickerLbl.Size = new System.Drawing.Size(85, 20);
             this.ExDatePickerLbl.TabIndex = 36;
@@ -185,7 +200,7 @@ namespace ivs.system
             this.CatIdDD.Items.AddRange(new object[] {
             "Active",
             "In-Active"});
-            this.CatIdDD.Location = new System.Drawing.Point(6, 243);
+            this.CatIdDD.Location = new System.Drawing.Point(3, 367);
             this.CatIdDD.Name = "CatIdDD";
             this.CatIdDD.Size = new System.Drawing.Size(194, 28);
             this.CatIdDD.TabIndex = 39;
@@ -194,7 +209,7 @@ namespace ivs.system
             // 
             this.CatIdDDErrorLbl.AutoSize = true;
             this.CatIdDDErrorLbl.ForeColor = System.Drawing.Color.Crimson;
-            this.CatIdDDErrorLbl.Location = new System.Drawing.Point(180, 220);
+            this.CatIdDDErrorLbl.Location = new System.Drawing.Point(177, 344);
             this.CatIdDDErrorLbl.Name = "CatIdDDErrorLbl";
             this.CatIdDDErrorLbl.Size = new System.Drawing.Size(15, 20);
             this.CatIdDDErrorLbl.TabIndex = 43;
@@ -204,7 +219,7 @@ namespace ivs.system
             // CatIdDDLbl
             // 
             this.CatIdDDLbl.AutoSize = true;
-            this.CatIdDDLbl.Location = new System.Drawing.Point(6, 220);
+            this.CatIdDDLbl.Location = new System.Drawing.Point(3, 344);
             this.CatIdDDLbl.Name = "CatIdDDLbl";
             this.CatIdDDLbl.Size = new System.Drawing.Size(69, 20);
             this.CatIdDDLbl.TabIndex = 44;
@@ -214,7 +229,7 @@ namespace ivs.system
             // 
             this.PNameErrorLbl.AutoSize = true;
             this.PNameErrorLbl.ForeColor = System.Drawing.Color.Crimson;
-            this.PNameErrorLbl.Location = new System.Drawing.Point(180, 167);
+            this.PNameErrorLbl.Location = new System.Drawing.Point(177, 291);
             this.PNameErrorLbl.Name = "PNameErrorLbl";
             this.PNameErrorLbl.Size = new System.Drawing.Size(15, 20);
             this.PNameErrorLbl.TabIndex = 40;
@@ -223,7 +238,7 @@ namespace ivs.system
             // 
             // PNameTxt
             // 
-            this.PNameTxt.Location = new System.Drawing.Point(6, 190);
+            this.PNameTxt.Location = new System.Drawing.Point(3, 314);
             this.PNameTxt.MaxLength = 40;
             this.PNameTxt.Name = "PNameTxt";
             this.PNameTxt.Size = new System.Drawing.Size(194, 27);
@@ -232,7 +247,7 @@ namespace ivs.system
             // PNameLbl
             // 
             this.PNameLbl.AutoSize = true;
-            this.PNameLbl.Location = new System.Drawing.Point(6, 167);
+            this.PNameLbl.Location = new System.Drawing.Point(3, 291);
             this.PNameLbl.Name = "PNameLbl";
             this.PNameLbl.Size = new System.Drawing.Size(104, 20);
             this.PNameLbl.TabIndex = 42;
@@ -242,7 +257,7 @@ namespace ivs.system
             // 
             this.BrErrorLbl.AutoSize = true;
             this.BrErrorLbl.ForeColor = System.Drawing.Color.Crimson;
-            this.BrErrorLbl.Location = new System.Drawing.Point(180, 114);
+            this.BrErrorLbl.Location = new System.Drawing.Point(177, 238);
             this.BrErrorLbl.Name = "BrErrorLbl";
             this.BrErrorLbl.Size = new System.Drawing.Size(15, 20);
             this.BrErrorLbl.TabIndex = 45;
@@ -251,7 +266,7 @@ namespace ivs.system
             // 
             // BrTxt
             // 
-            this.BrTxt.Location = new System.Drawing.Point(6, 137);
+            this.BrTxt.Location = new System.Drawing.Point(3, 261);
             this.BrTxt.MaxLength = 40;
             this.BrTxt.Name = "BrTxt";
             this.BrTxt.Size = new System.Drawing.Size(194, 27);
@@ -260,7 +275,7 @@ namespace ivs.system
             // BrLbl
             // 
             this.BrLbl.AutoSize = true;
-            this.BrLbl.Location = new System.Drawing.Point(6, 114);
+            this.BrLbl.Location = new System.Drawing.Point(3, 238);
             this.BrLbl.Name = "BrLbl";
             this.BrLbl.Size = new System.Drawing.Size(64, 20);
             this.BrLbl.TabIndex = 47;
@@ -270,7 +285,7 @@ namespace ivs.system
             // 
             this.PPrizeErrorLbl.AutoSize = true;
             this.PPrizeErrorLbl.ForeColor = System.Drawing.Color.Crimson;
-            this.PPrizeErrorLbl.Location = new System.Drawing.Point(180, 327);
+            this.PPrizeErrorLbl.Location = new System.Drawing.Point(177, 451);
             this.PPrizeErrorLbl.Name = "PPrizeErrorLbl";
             this.PPrizeErrorLbl.Size = new System.Drawing.Size(15, 20);
             this.PPrizeErrorLbl.TabIndex = 43;
@@ -279,7 +294,7 @@ namespace ivs.system
             // 
             // PPrizeTxt
             // 
-            this.PPrizeTxt.Location = new System.Drawing.Point(6, 350);
+            this.PPrizeTxt.Location = new System.Drawing.Point(3, 474);
             this.PPrizeTxt.MaxLength = 40;
             this.PPrizeTxt.Name = "PPrizeTxt";
             this.PPrizeTxt.Size = new System.Drawing.Size(194, 27);
@@ -288,7 +303,7 @@ namespace ivs.system
             // PPrizeLbl
             // 
             this.PPrizeLbl.AutoSize = true;
-            this.PPrizeLbl.Location = new System.Drawing.Point(6, 327);
+            this.PPrizeLbl.Location = new System.Drawing.Point(3, 451);
             this.PPrizeLbl.Name = "PPrizeLbl";
             this.PPrizeLbl.Size = new System.Drawing.Size(41, 20);
             this.PPrizeLbl.TabIndex = 45;
@@ -296,7 +311,7 @@ namespace ivs.system
             // 
             // ExDatePickerTxt
             // 
-            this.ExDatePickerTxt.Location = new System.Drawing.Point(5, 297);
+            this.ExDatePickerTxt.Location = new System.Drawing.Point(2, 421);
             this.ExDatePickerTxt.Name = "ExDatePickerTxt";
             this.ExDatePickerTxt.Size = new System.Drawing.Size(200, 27);
             this.ExDatePickerTxt.TabIndex = 3;
@@ -308,14 +323,14 @@ namespace ivs.system
             this.Product_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Product_dataGridView.BackgroundColor = System.Drawing.Color.White;
             this.Product_dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Product_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Product_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.Product_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Product_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IdGv,
@@ -326,21 +341,21 @@ namespace ivs.system
             this.PrizeGv,
             this.ExDateGv,
             this.StsGv});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GrayText;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Product_dataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GrayText;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Product_dataGridView.DefaultCellStyle = dataGridViewCellStyle6;
             this.Product_dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Product_dataGridView.Location = new System.Drawing.Point(0, 106);
             this.Product_dataGridView.Name = "Product_dataGridView";
             this.Product_dataGridView.ReadOnly = true;
             this.Product_dataGridView.RowHeadersVisible = false;
             this.Product_dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.Product_dataGridView.Size = new System.Drawing.Size(1011, 642);
+            this.Product_dataGridView.Size = new System.Drawing.Size(895, 643);
             this.Product_dataGridView.TabIndex = 6;
             this.Product_dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Product_dataGridView_CellClick);
             this.Product_dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Product_dataGridView_CellContentClick);
@@ -395,21 +410,10 @@ namespace ivs.system
             this.StsGv.Name = "StsGv";
             this.StsGv.ReadOnly = true;
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Active",
-            "In-Active"});
-            this.comboBox1.Location = new System.Drawing.Point(3, 430);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(194, 28);
-            this.comboBox1.TabIndex = 48;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 398);
+            this.label2.Location = new System.Drawing.Point(2, 504);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 20);
             this.label2.TabIndex = 49;
@@ -419,19 +423,54 @@ namespace ivs.system
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.Crimson;
-            this.label3.Location = new System.Drawing.Point(180, 461);
+            this.label3.Location = new System.Drawing.Point(180, 562);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(15, 20);
             this.label3.TabIndex = 50;
             this.label3.Text = "*";
             this.label3.Visible = false;
             // 
+            // QtyTxt
+            // 
+            this.QtyTxt.Location = new System.Drawing.Point(3, 533);
+            this.QtyTxt.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.QtyTxt.Name = "QtyTxt";
+            this.QtyTxt.Size = new System.Drawing.Size(199, 27);
+            this.QtyTxt.TabIndex = 7;
+            this.QtyTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // productImagePB
+            // 
+            this.productImagePB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.productImagePB.Location = new System.Drawing.Point(49, 112);
+            this.productImagePB.Name = "productImagePB";
+            this.productImagePB.Size = new System.Drawing.Size(112, 64);
+            this.productImagePB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.productImagePB.TabIndex = 7;
+            this.productImagePB.TabStop = false;
+            // 
+            // browseBtn
+            // 
+            this.browseBtn.BackColor = System.Drawing.Color.Black;
+            this.browseBtn.Location = new System.Drawing.Point(46, 182);
+            this.browseBtn.Name = "browseBtn";
+            this.browseBtn.Size = new System.Drawing.Size(118, 29);
+            this.browseBtn.TabIndex = 7;
+            this.browseBtn.Text = "Browse Image";
+            this.browseBtn.UseVisualStyleBackColor = false;
+            this.browseBtn.Click += new System.EventHandler(this.browseBtn_Click);
+            // 
             // Products
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1211, 748);
+            this.ClientSize = new System.Drawing.Size(1103, 749);
             this.Name = "Products";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Products";
             this.Load += new System.EventHandler(this.Products_Load);
             this.Controls.SetChildIndex(this.LeftPanel, 0);
@@ -441,6 +480,8 @@ namespace ivs.system
             this.rightPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.BackBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Product_dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.QtyTxt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productImagePB)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -476,6 +517,8 @@ namespace ivs.system
         private System.Windows.Forms.DataGridViewTextBoxColumn StsGv;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.NumericUpDown QtyTxt;
+        private System.Windows.Forms.Button browseBtn;
+        private System.Windows.Forms.PictureBox productImagePB;
     }
 }
