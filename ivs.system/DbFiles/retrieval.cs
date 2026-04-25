@@ -380,12 +380,69 @@ namespace ivs.system.DbFiles
                 ExdateGv.DataPropertyName = "ExDate";
                 StsGv.DataPropertyName = "Status";
 
-                gv.AutoGenerateColumns = false;   // ✅ VERY IMPORTANT
-                gv.DataSource = null;             // ✅ ADD THIS
+                gv.AutoGenerateColumns = false;
+                gv.DataSource = null;
                 gv.DataSource = tb;
             }
             catch (Exception ex)
             {
+                Mainclass.showMsg(ex.Message, "Error ...", "Error");
+            }
+        }
+
+        // ✅ ADDED: Shows orders from e-shop in Purchase Invoice list
+        public void showPurInvList(
+            DataGridView gv,
+            DataGridViewColumn invoiceIdGv,
+            DataGridViewColumn orderIdGv,
+            DataGridViewColumn productsGv,
+            DataGridViewColumn prizeGv,
+            DataGridViewColumn qtyGv,
+            DataGridViewColumn totalAmountGv,
+            DataGridViewColumn actionGv)
+        {
+            try
+            {
+                if (Mainclass.con.State != ConnectionState.Open)
+                {
+                    Mainclass.con.Open();
+                }
+
+                MessageBox.Show(
+                    "Connected Database: " + Mainclass.con.Database,
+                    "Database Check",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+
+                Mainclass.con.Close();
+
+                SqlCommand cmd = new SqlCommand("dbo.st_getPurInvList", Mainclass.con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable tb = new DataTable();
+                da.Fill(tb);
+
+                invoiceIdGv.DataPropertyName = "InvoiceID";
+                orderIdGv.DataPropertyName = "OrderID";
+                productsGv.DataPropertyName = "Products";
+                prizeGv.DataPropertyName = "Prize Per Unit";
+                qtyGv.DataPropertyName = "Quantity";
+                totalAmountGv.DataPropertyName = "Total Amount";
+                actionGv.DataPropertyName = "Action";
+
+                gv.AutoGenerateColumns = false;
+                gv.DataSource = null;
+                gv.DataSource = tb;
+            }
+            catch (Exception ex)
+            {
+                if (Mainclass.con.State == ConnectionState.Open)
+                {
+                    Mainclass.con.Close();
+                }
+
                 Mainclass.showMsg(ex.Message, "Error ...", "Error");
             }
         }

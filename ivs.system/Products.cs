@@ -1,8 +1,10 @@
 ﻿using ivs.system.DbFiles;
 using System;
-using System.Windows.Forms;
+using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
+using System.Windows.Forms;
 
 namespace ivs.system
 {
@@ -30,6 +32,12 @@ namespace ivs.system
         {
             Mainclass.enable_reset(LeftPanel);
             edit = 0;
+            ProID = 0;
+            imagePath = "";
+            currentImage = null;
+            productImagePB.Image = null;
+            QtyTxt.Value = 0;
+            StatusDD.SelectedIndex = -1;
         }
 
         public override void SaveBtn_Click(object sender, EventArgs e)
@@ -38,20 +46,43 @@ namespace ivs.system
             if (PNameTxt.Text == "") { PNameErrorLbl.Visible = true; } else { PNameErrorLbl.Visible = false; }
             if (CatIdDD.Text == "") { CatIdDDErrorLbl.Visible = true; } else { CatIdDDErrorLbl.Visible = false; }
             if (PPrizeTxt.Text == "") { PPrizeErrorLbl.Visible = true; } else { PPrizeErrorLbl.Visible = false; }
-            if (ExDatePickerTxt.Value < DateTime.Now) { ExDatePickerErrorLbl.Visible = true; ExDatePickerErrorLbl.Text = "Invalid Date"; } else { ExDatePickerErrorLbl.Visible = false; }
-            if (ExDatePickerTxt.Value.Date == DateTime.Now.Date) { ExDatePickerErrorLbl.Visible = false; }
-            if (StatusDD.SelectedIndex == -1) { StatusErrorLbl.Visible = true; } else { StatusErrorLbl.Visible = false; }
 
-            if (StatusDD.SelectedIndex == 0)
+            if (ExDatePickerTxt.Value < DateTime.Now)
             {
-                Stat = 1;
+                ExDatePickerErrorLbl.Visible = true;
+                ExDatePickerErrorLbl.Text = "Invalid Date";
             }
-            else if (StatusDD.SelectedIndex == 1)
+            else
             {
-                Stat = 0;
+                ExDatePickerErrorLbl.Visible = false;
             }
 
-            if (BrErrorLbl.Visible | PNameErrorLbl.Visible | StatusErrorLbl.Visible | CatIdDDErrorLbl.Visible | PPrizeErrorLbl.Visible | ExDatePickerErrorLbl.Visible)
+            if (ExDatePickerTxt.Value.Date == DateTime.Now.Date)
+            {
+                ExDatePickerErrorLbl.Visible = false;
+            }
+
+            if (StatusDD.SelectedItem == null)
+            {
+                StatusErrorLbl.Visible = true;
+            }
+            else
+            {
+                StatusErrorLbl.Visible = false;
+
+                string statusText = StatusDD.Text.Trim().ToLower();
+
+                if (statusText == "active")
+                {
+                    Stat = 1;
+                }
+                else
+                {
+                    Stat = 0;
+                }
+            }
+
+            if (BrErrorLbl.Visible || PNameErrorLbl.Visible || StatusErrorLbl.Visible || CatIdDDErrorLbl.Visible || PPrizeErrorLbl.Visible || ExDatePickerErrorLbl.Visible)
             {
                 Mainclass.showMsg("All Filed is required", "Caption", "Error");
             }
@@ -60,13 +91,31 @@ namespace ivs.system
                 if (edit == 0)
                 {
                     Insertion i = new Insertion();
+
                     if (ExDatePickerTxt.Value.Date != DateTime.Now.Date)
                     {
-                        i.insertProduct(BrTxt.Text, PNameTxt.Text, Convert.ToInt32(CatIdDD.SelectedValue), Convert.ToSingle(PPrizeTxt.Text), Stat, Convert.ToInt32(QtyTxt.Value), imagePath, ExDatePickerTxt.Value);
+                        i.insertProduct(
+                            BrTxt.Text,
+                            PNameTxt.Text,
+                            Convert.ToInt32(CatIdDD.SelectedValue),
+                            Convert.ToSingle(PPrizeTxt.Text),
+                            Stat,
+                            Convert.ToInt32(QtyTxt.Value),
+                            imagePath,
+                            ExDatePickerTxt.Value
+                        );
                     }
                     else
                     {
-                        i.insertProduct(BrTxt.Text, PNameTxt.Text, Convert.ToInt32(CatIdDD.SelectedValue), Convert.ToSingle(PPrizeTxt.Text), Stat, Convert.ToInt32(QtyTxt.Value), imagePath);
+                        i.insertProduct(
+                            BrTxt.Text,
+                            PNameTxt.Text,
+                            Convert.ToInt32(CatIdDD.SelectedValue),
+                            Convert.ToSingle(PPrizeTxt.Text),
+                            Stat,
+                            Convert.ToInt32(QtyTxt.Value),
+                            imagePath
+                        );
                     }
                 }
                 else if (edit == 1)
@@ -75,13 +124,35 @@ namespace ivs.system
                     if (dr == DialogResult.Yes)
                     {
                         Updatation u = new Updatation();
+
                         if (ExDatePickerTxt.Value.Date != DateTime.Now.Date)
                         {
-                            u.updateProduct(ProID, BrTxt.Text, PNameTxt.Text, Convert.ToInt32(CatIdDD.SelectedValue), Convert.ToSingle(PPrizeTxt.Text), Stat, Convert.ToInt32(QtyTxt.Value), imagePath, currentImage, ExDatePickerTxt.Value);
+                            u.updateProduct(
+                                ProID,
+                                BrTxt.Text,
+                                PNameTxt.Text,
+                                Convert.ToInt32(CatIdDD.SelectedValue),
+                                Convert.ToSingle(PPrizeTxt.Text),
+                                Stat,
+                                Convert.ToInt32(QtyTxt.Value),
+                                imagePath,
+                                currentImage,
+                                ExDatePickerTxt.Value
+                            );
                         }
                         else
                         {
-                            u.updateProduct(ProID, BrTxt.Text, PNameTxt.Text, Convert.ToInt32(CatIdDD.SelectedValue), Convert.ToSingle(PPrizeTxt.Text), Stat, Convert.ToInt32(QtyTxt.Value), imagePath, currentImage);
+                            u.updateProduct(
+                                ProID,
+                                BrTxt.Text,
+                                PNameTxt.Text,
+                                Convert.ToInt32(CatIdDD.SelectedValue),
+                                Convert.ToSingle(PPrizeTxt.Text),
+                                Stat,
+                                Convert.ToInt32(QtyTxt.Value),
+                                imagePath,
+                                currentImage
+                            );
                         }
                     }
                 }
@@ -134,45 +205,122 @@ namespace ivs.system
             if (e.RowIndex != -1)
             {
                 DataGridViewRow row = Product_dataGridView.Rows[e.RowIndex];
-                ProID = Convert.ToInt32(row.Cells["IdGv"].Value.ToString());
-                PNameTxt.Text = row.Cells["NameGv"].Value.ToString();
-                BrTxt.Text = row.Cells["BarchorGv"].Value.ToString();
-                if (row.Cells["CatIDGV"].Value != DBNull.Value)
+
+                if (row.Cells["IdGv"].Value != null && row.Cells["IdGv"].Value != DBNull.Value)
+                {
+                    ProID = Convert.ToInt32(row.Cells["IdGv"].Value);
+                }
+
+                PNameTxt.Text = row.Cells["NameGv"].Value == null || row.Cells["NameGv"].Value == DBNull.Value
+                    ? ""
+                    : row.Cells["NameGv"].Value.ToString();
+
+                BrTxt.Text = row.Cells["BarchorGv"].Value == null || row.Cells["BarchorGv"].Value == DBNull.Value
+                    ? ""
+                    : row.Cells["BarchorGv"].Value.ToString();
+
+                if (row.Cells["CatIDGV"].Value != null && row.Cells["CatIDGV"].Value != DBNull.Value)
                 {
                     CatIdDD.SelectedValue = Convert.ToInt32(row.Cells["CatIDGV"].Value);
                 }
-                PPrizeTxt.Text = row.Cells["PrizeGv"].Value.ToString();
 
-                if (row.Cells["ExDateGv"].FormattedValue.ToString() == "")
+                PPrizeTxt.Text = row.Cells["PrizeGv"].Value == null || row.Cells["PrizeGv"].Value == DBNull.Value
+                    ? ""
+                    : row.Cells["PrizeGv"].Value.ToString();
+
+                if (row.Cells["QtyGv"].Value != null && row.Cells["QtyGv"].Value != DBNull.Value)
+                {
+                    QtyTxt.Value = Convert.ToDecimal(row.Cells["QtyGv"].Value);
+                }
+                else
+                {
+                    QtyTxt.Value = 0;
+                }
+
+                if (row.Cells["ExDateGv"].Value == null || row.Cells["ExDateGv"].Value == DBNull.Value || row.Cells["ExDateGv"].FormattedValue.ToString() == "")
                 {
                     ExDatePickerTxt.Value = DateTime.Now;
                 }
                 else
                 {
-                    ExDatePickerTxt.Value = Convert.ToDateTime(row.Cells["ExDateGv"].Value.ToString());
+                    ExDatePickerTxt.Value = Convert.ToDateTime(row.Cells["ExDateGv"].Value);
                 }
 
-                if (row.Cells["StsGv"].Value.ToString() == "1")
+                if (row.Cells["StsGv"].Value != null && row.Cells["StsGv"].Value != DBNull.Value)
                 {
-                    StatusDD.SelectedIndex = 0; // Active
+                    string statusText = row.Cells["StsGv"].Value.ToString().Trim().ToLower();
+
+                    if (statusText == "active")
+                    {
+                        StatusDD.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        StatusDD.SelectedIndex = 1;
+                    }
                 }
                 else
                 {
-                    StatusDD.SelectedIndex = 1; // Inactive
+                    StatusDD.SelectedIndex = -1;
                 }
+
+                imagePath = "";
+                LoadProductImageById(ProID);
             }
 
             Mainclass.disable(LeftPanel);
         }
 
+        private void LoadProductImageById(int productId)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SELECT ProductImage FROM dbo.Products WHERE Id = @Id", Mainclass.con);
+                cmd.Parameters.AddWithValue("@Id", productId);
+
+                if (Mainclass.con.State != ConnectionState.Open)
+                {
+                    Mainclass.con.Open();
+                }
+
+                object result = cmd.ExecuteScalar();
+
+                if (result != null && result != DBNull.Value)
+                {
+                    currentImage = (byte[])result;
+
+                    using (MemoryStream ms = new MemoryStream(currentImage))
+                    {
+                        productImagePB.Image = Image.FromStream(ms);
+                    }
+                }
+                else
+                {
+                    currentImage = null;
+                    productImagePB.Image = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                currentImage = null;
+                productImagePB.Image = null;
+                Mainclass.showMsg(ex.Message, "Error", "Error");
+            }
+            finally
+            {
+                if (Mainclass.con.State == ConnectionState.Open)
+                {
+                    Mainclass.con.Close();
+                }
+            }
+        }
+
         private void Product_dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
 
         private void LeftPanel_Scroll(object sender, ScrollEventArgs e)
         {
-
         }
 
         private void browseBtn_Click(object sender, EventArgs e)

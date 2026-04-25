@@ -115,10 +115,6 @@ namespace ivs.system
             this.rightPanel.Controls.SetChildIndex(this.PurInv_dataGridView, 0);
             this.rightPanel.Controls.SetChildIndex(this.PInvAmontPanel, 0);
             // 
-            // WlcUserLbl
-            // 
-            this.WlcUserLbl.Text = "Admin";
-            // 
             // PurInv_dataGridView
             // 
             this.PurInv_dataGridView.AllowUserToAddRows = false;
