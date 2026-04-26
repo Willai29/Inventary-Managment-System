@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,19 +20,64 @@ namespace ivs.system
         int? ProID;
         string _barcode, _Product, _Prize;
         string[] ProductDataArr = new string[4];
-        float Qty, Prz, Tt,gt;
+        float Qty, Prz, Tt, gt;
         int Count;
         Regex prReg = new Regex(@"^[0-9]*(?:\.[0-9]*)?$");
         retrieval re = new retrieval();
+
         public PurchuaseInvoice()
         {
             InitializeComponent();
         }
+
         private void PurchuaseInvoice_Load(object sender, EventArgs e)
         {
             re.ShowDropDownList("st_getSuppliersDataList", CompanyDD, "Company", "ID");
             Mainclass.disable(LeftPanel);
+
+            LoadEshopOrders();
         }
+
+        private void LoadEshopOrders()
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("dbo.st_getPurInvList", Mainclass.con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable tb = new DataTable();
+                da.Fill(tb);
+
+                gt = 0;
+                PurInv_dataGridView.Rows.Clear();
+
+                foreach (DataRow row in tb.Rows)
+                {
+                    float price = Convert.ToSingle(row["Prize Per Unit"]);
+                    float qty = Convert.ToSingle(row["Quantity"]);
+                    float total = Convert.ToSingle(row["Total Amount"]);
+
+                    PurInv_dataGridView.Rows.Add(
+                        row["OrderID"].ToString(),
+                        "Online Order",
+                        row["Products"].ToString(),
+                        price.ToString("0.00"),
+                        qty.ToString("0"),
+                        total.ToString("0.00")
+                    );
+
+                    gt += total;
+                }
+
+                GrossAmtPrzTxt.Text = gt.ToString("0.00");
+            }
+            catch (Exception ex)
+            {
+                Mainclass.showMsg(ex.Message, "Error", "Error");
+            }
+        }
+
         private void BarcodeTxt_TextChanged(object sender, EventArgs e)
         {
             ProductDataArr = re.showProductWRTBarchoe(BarcodeTxt.Text);
@@ -72,13 +118,14 @@ namespace ivs.system
         {
             if (CompanyDD.SelectedIndex == -1) { CompanyErrorLbl.Visible = true; } else { CompanyErrorLbl.Visible = false; }
         }
+
         private void QtyTxt_TextChanged(object sender, EventArgs e)
         {
             if (QtyTxt.Text != "")
             {
                 if (prReg.Match(QtyTxt.Text).Success)
                 {
-                    
+
                     Qty = Convert.ToSingle(QtyTxt.Text);
                     Prz = Convert.ToSingle(PPrizeTxt.Text);
                     Tt = Qty * Prz;
@@ -97,12 +144,12 @@ namespace ivs.system
             }
 
         }
+
         public override void AddBtn_Click(object sender, EventArgs e)
         {
             Mainclass.enable_reset(LeftPanel);
-
-
         }
+
         private void AddCartBtn_Click(object sender, EventArgs e)
         {
             if (CompanyDD.SelectedIndex == -1) { CompanyErrorLbl.Visible = true; } else { CompanyErrorLbl.Visible = false; }
@@ -115,7 +162,7 @@ namespace ivs.system
             }
             else
             {
-                PurInv_dataGridView.Rows.Add(ProID,CompanyDD.Text,ProductTxt.Text,PPrizeTxt.Text,QtyTxt.Text, TtaAmtLbl.Text);
+                PurInv_dataGridView.Rows.Add(ProID, CompanyDD.Text, ProductTxt.Text, PPrizeTxt.Text, QtyTxt.Text, TtaAmtLbl.Text);
 
                 gt += Tt;
                 GrossAmtPrzTxt.Text = gt.ToString();
@@ -128,11 +175,12 @@ namespace ivs.system
                 Array.Clear(ProductDataArr, 0, ProductDataArr.Length);
             }
         }
+
         private void PurInv_dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex !=-1 && e.ColumnIndex != -1)
+            if (e.RowIndex != -1 && e.ColumnIndex != -1)
             {
-                if(e.ColumnIndex == 6)
+                if (e.ColumnIndex == 6)
                 {
                     DataGridViewRow row = PurInv_dataGridView.Rows[e.RowIndex];
                     gt -= Convert.ToSingle(row.Cells["TotalAmtGv"].Value.ToString());
@@ -142,6 +190,7 @@ namespace ivs.system
                 }
             }
         }
+
         public override void SaveBtn_Click(object sender, EventArgs e)
         {
             Int64 PurInvID;
@@ -149,8 +198,8 @@ namespace ivs.system
             Updatation u = new Updatation();
             using (TransactionScope Trsc = new TransactionScope())
             {
-                PurInvID =i.insertPurchaseInvoice(DateTime.Now.Date, retrieval._UId, Convert.ToInt32(CompanyDD.SelectedValue));
-                foreach(DataGridViewRow row in PurInv_dataGridView.Rows)
+                PurInvID = i.insertPurchaseInvoice(DateTime.Now.Date, retrieval._UId, Convert.ToInt32(CompanyDD.SelectedValue));
+                foreach (DataGridViewRow row in PurInv_dataGridView.Rows)
                 {
                     Count += i.insertPurchaseInvoiceDetails(PurInvID, Convert.ToInt32(row.Cells["ProIdGv"].Value.ToString()), Convert.ToInt32(row.Cells["QtyGV"].Value.ToString()), Convert.ToSingle(row.Cells["PrizePUGv"].Value.ToString()));
                     int q;
@@ -166,7 +215,7 @@ namespace ivs.system
                         i.insertStock(Convert.ToInt32(row.Cells["ProIdGv"].Value.ToString()), Convert.ToInt32(row.Cells["QtyGV"].Value.ToString()));
                     }
                 }
-                if(Count > 0)
+                if (Count > 0)
                 {
 
                     Mainclass.showMsg("Purchuase Succcessfully ", "Success", "Success");
@@ -177,16 +226,12 @@ namespace ivs.system
                 }
                 Trsc.Complete();
             }
-            
-
-
         }
+
         public override void viewBtn_Click(object sender, EventArgs e)
         {
             purchuaseInvoiceDetails win = new purchuaseInvoiceDetails();
             Mainclass.showWindow(win, this, MDI.ActiveForm);
-
-            
         }
     }
 }
