@@ -43,12 +43,9 @@ namespace ivs.system
             this.StsGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LeftPanel.SuspendLayout();
             this.rightPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BackBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cat_dataGridView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // searchtxt
-            // 
-            
             // 
             // LeftPanel
             // 
@@ -59,6 +56,7 @@ namespace ivs.system
             this.LeftPanel.Controls.Add(this.Cat_NameTxt);
             this.LeftPanel.Controls.Add(this.CatNameLbl);
             this.LeftPanel.Size = new System.Drawing.Size(200, 450);
+            this.LeftPanel.Controls.SetChildIndex(this.panel2, 0);
             this.LeftPanel.Controls.SetChildIndex(this.CatNameLbl, 0);
             this.LeftPanel.Controls.SetChildIndex(this.Cat_NameTxt, 0);
             this.LeftPanel.Controls.SetChildIndex(this.CatErrorLbl, 0);
@@ -129,7 +127,7 @@ namespace ivs.system
             this.CatNameLbl.Name = "CatNameLbl";
             this.CatNameLbl.Size = new System.Drawing.Size(113, 20);
             this.CatNameLbl.TabIndex = 30;
-            this.CatNameLbl.Text = "Catagory Name";
+            this.CatNameLbl.Text = "Category Name";
             // 
             // Cat_dataGridView
             // 
@@ -178,7 +176,7 @@ namespace ivs.system
             // 
             // NameGv
             // 
-            this.NameGv.HeaderText = "Catagory Name";
+            this.NameGv.HeaderText = "Category Name";
             this.NameGv.Name = "NameGv";
             this.NameGv.ReadOnly = true;
             // 
@@ -196,9 +194,12 @@ namespace ivs.system
             this.Name = "Catagories";
             this.Text = "Catagories";
             this.Load += new System.EventHandler(this.Catagories_Load);
+            this.Controls.SetChildIndex(this.LeftPanel, 0);
+            this.Controls.SetChildIndex(this.rightPanel, 0);
             this.LeftPanel.ResumeLayout(false);
             this.LeftPanel.PerformLayout();
             this.rightPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.BackBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cat_dataGridView)).EndInit();
             this.ResumeLayout(false);
 

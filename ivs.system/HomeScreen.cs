@@ -47,7 +47,7 @@ namespace ivs.system
 
         private void Inv_purc_Click(object sender, EventArgs e)
         {
-            PurchuaseInvoice windowOpen = new PurchuaseInvoice();
+            purchuaseInvoiceDetails windowOpen = new purchuaseInvoiceDetails();
             Mainclass.showWindow(windowOpen, this, MDI.ActiveForm);
         }
 

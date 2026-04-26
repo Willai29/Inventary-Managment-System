@@ -32,6 +32,10 @@ namespace ivs.system
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Stocks_dataGridView = new System.Windows.Forms.DataGridView();
+            this.PInvAmontPanel = new System.Windows.Forms.Panel();
+            this.GrandTableLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.GrossAmtPrzTxt = new System.Windows.Forms.Label();
+            this.GrossAmtTxtLabl = new System.Windows.Forms.Label();
             this.stkdGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProIdGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BarcodeGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,10 +46,6 @@ namespace ivs.system
             this.TotalAmtGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ExDateGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StatusGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PInvAmontPanel = new System.Windows.Forms.Panel();
-            this.GrandTableLayout = new System.Windows.Forms.TableLayoutPanel();
-            this.GrossAmtPrzTxt = new System.Windows.Forms.Label();
-            this.GrossAmtTxtLabl = new System.Windows.Forms.Label();
             this.LeftPanel.SuspendLayout();
             this.rightPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BackBtn)).BeginInit();
@@ -65,10 +65,6 @@ namespace ivs.system
             this.rightPanel.Size = new System.Drawing.Size(600, 450);
             this.rightPanel.Controls.SetChildIndex(this.Stocks_dataGridView, 0);
             this.rightPanel.Controls.SetChildIndex(this.PInvAmontPanel, 0);
-            // 
-            // WlcUserLbl
-            // 
-            this.WlcUserLbl.Text = "Admin";
             // 
             // Stocks_dataGridView
             // 
@@ -113,70 +109,6 @@ namespace ivs.system
             this.Stocks_dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.Stocks_dataGridView.Size = new System.Drawing.Size(600, 243);
             this.Stocks_dataGridView.TabIndex = 8;
-            // 
-            // stkdGv
-            // 
-            this.stkdGv.HeaderText = "Id";
-            this.stkdGv.Name = "stkdGv";
-            this.stkdGv.ReadOnly = true;
-            this.stkdGv.Visible = false;
-            // 
-            // ProIdGv
-            // 
-            this.ProIdGv.HeaderText = "ProId";
-            this.ProIdGv.Name = "ProIdGv";
-            this.ProIdGv.ReadOnly = true;
-            this.ProIdGv.Visible = false;
-            // 
-            // BarcodeGv
-            // 
-            this.BarcodeGv.HeaderText = "Barcode";
-            this.BarcodeGv.Name = "BarcodeGv";
-            this.BarcodeGv.ReadOnly = true;
-            // 
-            // ProductGv
-            // 
-            this.ProductGv.HeaderText = "Product";
-            this.ProductGv.Name = "ProductGv";
-            this.ProductGv.ReadOnly = true;
-            // 
-            // CatgoeryGv
-            // 
-            this.CatgoeryGv.HeaderText = "Catgoery";
-            this.CatgoeryGv.Name = "CatgoeryGv";
-            this.CatgoeryGv.ReadOnly = true;
-            // 
-            // PrizePrUntGv
-            // 
-            this.PrizePrUntGv.HeaderText = "Prize";
-            this.PrizePrUntGv.Name = "PrizePrUntGv";
-            this.PrizePrUntGv.ReadOnly = true;
-            // 
-            // QtyGv
-            // 
-            this.QtyGv.HeaderText = "Qty";
-            this.QtyGv.Name = "QtyGv";
-            this.QtyGv.ReadOnly = true;
-            // 
-            // TotalAmtGv
-            // 
-            this.TotalAmtGv.HeaderText = "Total Amount";
-            this.TotalAmtGv.Name = "TotalAmtGv";
-            this.TotalAmtGv.ReadOnly = true;
-            // 
-            // ExDateGv
-            // 
-            this.ExDateGv.HeaderText = "Expiry Date";
-            this.ExDateGv.Name = "ExDateGv";
-            this.ExDateGv.ReadOnly = true;
-            // 
-            // StatusGv
-            // 
-            this.StatusGv.HeaderText = "Status";
-            this.StatusGv.Name = "StatusGv";
-            this.StatusGv.ReadOnly = true;
-            this.StatusGv.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.StatusGv.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // PInvAmontPanel
             // 
@@ -226,6 +158,70 @@ namespace ivs.system
             this.GrossAmtTxtLabl.TabIndex = 1;
             this.GrossAmtTxtLabl.Text = "Total Amount";
             this.GrossAmtTxtLabl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // stkdGv
+            // 
+            this.stkdGv.HeaderText = "Id";
+            this.stkdGv.Name = "stkdGv";
+            this.stkdGv.ReadOnly = true;
+            this.stkdGv.Visible = false;
+            // 
+            // ProIdGv
+            // 
+            this.ProIdGv.HeaderText = "ProId";
+            this.ProIdGv.Name = "ProIdGv";
+            this.ProIdGv.ReadOnly = true;
+            this.ProIdGv.Visible = false;
+            // 
+            // BarcodeGv
+            // 
+            this.BarcodeGv.HeaderText = "Barcode";
+            this.BarcodeGv.Name = "BarcodeGv";
+            this.BarcodeGv.ReadOnly = true;
+            // 
+            // ProductGv
+            // 
+            this.ProductGv.HeaderText = "Product";
+            this.ProductGv.Name = "ProductGv";
+            this.ProductGv.ReadOnly = true;
+            // 
+            // CatgoeryGv
+            // 
+            this.CatgoeryGv.HeaderText = "Category";
+            this.CatgoeryGv.Name = "CatgoeryGv";
+            this.CatgoeryGv.ReadOnly = true;
+            // 
+            // PrizePrUntGv
+            // 
+            this.PrizePrUntGv.HeaderText = "Price";
+            this.PrizePrUntGv.Name = "PrizePrUntGv";
+            this.PrizePrUntGv.ReadOnly = true;
+            // 
+            // QtyGv
+            // 
+            this.QtyGv.HeaderText = "Qty";
+            this.QtyGv.Name = "QtyGv";
+            this.QtyGv.ReadOnly = true;
+            // 
+            // TotalAmtGv
+            // 
+            this.TotalAmtGv.HeaderText = "Total Amount";
+            this.TotalAmtGv.Name = "TotalAmtGv";
+            this.TotalAmtGv.ReadOnly = true;
+            // 
+            // ExDateGv
+            // 
+            this.ExDateGv.HeaderText = "Expiry Date";
+            this.ExDateGv.Name = "ExDateGv";
+            this.ExDateGv.ReadOnly = true;
+            // 
+            // StatusGv
+            // 
+            this.StatusGv.HeaderText = "Status";
+            this.StatusGv.Name = "StatusGv";
+            this.StatusGv.ReadOnly = true;
+            this.StatusGv.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.StatusGv.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Stocks
             // 

@@ -38,6 +38,10 @@ namespace ivs.system
             this.label2 = new System.Windows.Forms.Label();
             this.DateLbl = new System.Windows.Forms.Label();
             this.PurInvDetail_dataGridView = new System.Windows.Forms.DataGridView();
+            this.PInvAmontPanel = new System.Windows.Forms.Panel();
+            this.GrandTableLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.GrossAmtPrzTxt = new System.Windows.Forms.Label();
+            this.GrossAmtTxtLabl = new System.Windows.Forms.Label();
             this.PurInvDtlIdGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProIdGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,10 +49,6 @@ namespace ivs.system
             this.QtyGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalAmtGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Action = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.PInvAmontPanel = new System.Windows.Forms.Panel();
-            this.GrandTableLayout = new System.Windows.Forms.TableLayoutPanel();
-            this.GrossAmtPrzTxt = new System.Windows.Forms.Label();
-            this.GrossAmtTxtLabl = new System.Windows.Forms.Label();
             this.LeftPanel.SuspendLayout();
             this.rightPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BackBtn)).BeginInit();
@@ -81,10 +81,6 @@ namespace ivs.system
             this.rightPanel.Size = new System.Drawing.Size(600, 450);
             this.rightPanel.Controls.SetChildIndex(this.PurInvDetail_dataGridView, 0);
             this.rightPanel.Controls.SetChildIndex(this.PInvAmontPanel, 0);
-            // 
-            // WlcUserLbl
-            // 
-            this.WlcUserLbl.Text = "Admin";
             // 
             // CompanyDD
             // 
@@ -197,51 +193,6 @@ namespace ivs.system
             this.PurInvDetail_dataGridView.TabIndex = 7;
             this.PurInvDetail_dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PurInvDetail_dataGridView_CellClick_1);
             // 
-            // PurInvDtlIdGv
-            // 
-            this.PurInvDtlIdGv.HeaderText = "Detail ID";
-            this.PurInvDtlIdGv.Name = "PurInvDtlIdGv";
-            this.PurInvDtlIdGv.ReadOnly = true;
-            this.PurInvDtlIdGv.Visible = false;
-            // 
-            // ProIdGv
-            // 
-            this.ProIdGv.HeaderText = "ProId";
-            this.ProIdGv.Name = "ProIdGv";
-            this.ProIdGv.ReadOnly = true;
-            this.ProIdGv.Visible = false;
-            // 
-            // ProductGv
-            // 
-            this.ProductGv.HeaderText = "Product";
-            this.ProductGv.Name = "ProductGv";
-            this.ProductGv.ReadOnly = true;
-            // 
-            // PrizePrUntGv
-            // 
-            this.PrizePrUntGv.HeaderText = "Prize";
-            this.PrizePrUntGv.Name = "PrizePrUntGv";
-            this.PrizePrUntGv.ReadOnly = true;
-            // 
-            // QtyGv
-            // 
-            this.QtyGv.HeaderText = "Qty";
-            this.QtyGv.Name = "QtyGv";
-            this.QtyGv.ReadOnly = true;
-            // 
-            // TotalAmtGv
-            // 
-            this.TotalAmtGv.HeaderText = "Total Amount";
-            this.TotalAmtGv.Name = "TotalAmtGv";
-            this.TotalAmtGv.ReadOnly = true;
-            // 
-            // Action
-            // 
-            this.Action.HeaderText = "Action";
-            this.Action.Name = "Action";
-            this.Action.ReadOnly = true;
-            this.Action.Text = "Delect";
-            // 
             // PInvAmontPanel
             // 
             this.PInvAmontPanel.Controls.Add(this.GrandTableLayout);
@@ -290,6 +241,51 @@ namespace ivs.system
             this.GrossAmtTxtLabl.TabIndex = 1;
             this.GrossAmtTxtLabl.Text = "Total Amount";
             this.GrossAmtTxtLabl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // PurInvDtlIdGv
+            // 
+            this.PurInvDtlIdGv.HeaderText = "Detail ID";
+            this.PurInvDtlIdGv.Name = "PurInvDtlIdGv";
+            this.PurInvDtlIdGv.ReadOnly = true;
+            this.PurInvDtlIdGv.Visible = false;
+            // 
+            // ProIdGv
+            // 
+            this.ProIdGv.HeaderText = "ProId";
+            this.ProIdGv.Name = "ProIdGv";
+            this.ProIdGv.ReadOnly = true;
+            this.ProIdGv.Visible = false;
+            // 
+            // ProductGv
+            // 
+            this.ProductGv.HeaderText = "Product";
+            this.ProductGv.Name = "ProductGv";
+            this.ProductGv.ReadOnly = true;
+            // 
+            // PrizePrUntGv
+            // 
+            this.PrizePrUntGv.HeaderText = "Price";
+            this.PrizePrUntGv.Name = "PrizePrUntGv";
+            this.PrizePrUntGv.ReadOnly = true;
+            // 
+            // QtyGv
+            // 
+            this.QtyGv.HeaderText = "Qty";
+            this.QtyGv.Name = "QtyGv";
+            this.QtyGv.ReadOnly = true;
+            // 
+            // TotalAmtGv
+            // 
+            this.TotalAmtGv.HeaderText = "Total Amount";
+            this.TotalAmtGv.Name = "TotalAmtGv";
+            this.TotalAmtGv.ReadOnly = true;
+            // 
+            // Action
+            // 
+            this.Action.HeaderText = "Action";
+            this.Action.Name = "Action";
+            this.Action.ReadOnly = true;
+            this.Action.Text = "Delect";
             // 
             // purchuaseInvoiceDetails
             // 

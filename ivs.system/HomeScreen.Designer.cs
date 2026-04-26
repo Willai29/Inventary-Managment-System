@@ -52,10 +52,6 @@ namespace ivs.system
             this.rightPanel.Size = new System.Drawing.Size(870, 739);
             this.rightPanel.Controls.SetChildIndex(this.tableLayoutPanel1, 0);
             // 
-            // WlcUserLbl
-            // 
-            this.WlcUserLbl.Text = "Admin";
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -176,7 +172,7 @@ namespace ivs.system
             this.CatBtn.Name = "CatBtn";
             this.CatBtn.Size = new System.Drawing.Size(170, 89);
             this.CatBtn.TabIndex = 5;
-            this.CatBtn.Text = "Catagories";
+            this.CatBtn.Text = "Categories";
             this.CatBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.CatBtn.UseVisualStyleBackColor = true;
             this.CatBtn.Click += new System.EventHandler(this.CatBtn_Click);

@@ -29,17 +29,10 @@ namespace ivs.system
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PurInv_dataGridView = new System.Windows.Forms.DataGridView();
-            this.ProIdGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CompNameGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrizePUGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QtyGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalAmtGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DeleteGv = new System.Windows.Forms.DataGridViewButtonColumn();
             this.PInvAmontPanel = new System.Windows.Forms.Panel();
             this.GrandTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.GrossAmtPrzTxt = new System.Windows.Forms.Label();
@@ -61,6 +54,13 @@ namespace ivs.system
             this.TtAmtLbl = new System.Windows.Forms.Label();
             this.TtaAmtLbl = new System.Windows.Forms.Label();
             this.imsDbDataSet1 = new ivs.system.imsDbDataSet();
+            this.ProIdGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CompNameGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrizePUGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QtyGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalAmtGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeleteGv = new System.Windows.Forms.DataGridViewButtonColumn();
             this.LeftPanel.SuspendLayout();
             this.rightPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BackBtn)).BeginInit();
@@ -122,14 +122,14 @@ namespace ivs.system
             this.PurInv_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.PurInv_dataGridView.BackgroundColor = System.Drawing.Color.White;
             this.PurInv_dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PurInv_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PurInv_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.PurInv_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PurInv_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProIdGv,
@@ -139,14 +139,14 @@ namespace ivs.system
             this.QtyGV,
             this.TotalAmtGv,
             this.DeleteGv});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GrayText;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PurInv_dataGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GrayText;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PurInv_dataGridView.DefaultCellStyle = dataGridViewCellStyle6;
             this.PurInv_dataGridView.Dock = System.Windows.Forms.DockStyle.Top;
             this.PurInv_dataGridView.Location = new System.Drawing.Point(0, 106);
             this.PurInv_dataGridView.Name = "PurInv_dataGridView";
@@ -156,56 +156,6 @@ namespace ivs.system
             this.PurInv_dataGridView.Size = new System.Drawing.Size(671, 296);
             this.PurInv_dataGridView.TabIndex = 6;
             this.PurInv_dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PurInv_dataGridView_CellClick);
-            // 
-            // ProIdGv
-            // 
-            this.ProIdGv.HeaderText = "ID";
-            this.ProIdGv.Name = "ProIdGv";
-            this.ProIdGv.ReadOnly = true;
-            this.ProIdGv.Visible = false;
-            // 
-            // CompNameGv
-            // 
-            this.CompNameGv.HeaderText = "Company";
-            this.CompNameGv.Name = "CompNameGv";
-            this.CompNameGv.ReadOnly = true;
-            // 
-            // ProductGv
-            // 
-            this.ProductGv.HeaderText = "Products";
-            this.ProductGv.Name = "ProductGv";
-            this.ProductGv.ReadOnly = true;
-            // 
-            // PrizePUGv
-            // 
-            this.PrizePUGv.HeaderText = "Prize Per Unit";
-            this.PrizePUGv.Name = "PrizePUGv";
-            this.PrizePUGv.ReadOnly = true;
-            // 
-            // QtyGV
-            // 
-            this.QtyGV.HeaderText = "Qautity";
-            this.QtyGV.Name = "QtyGV";
-            this.QtyGV.ReadOnly = true;
-            // 
-            // TotalAmtGv
-            // 
-            this.TotalAmtGv.HeaderText = "Total Amount";
-            this.TotalAmtGv.Name = "TotalAmtGv";
-            this.TotalAmtGv.ReadOnly = true;
-            // 
-            // DeleteGv
-            // 
-            this.DeleteGv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Gray;
-            this.DeleteGv.DefaultCellStyle = dataGridViewCellStyle2;
-            this.DeleteGv.FillWeight = 110F;
-            this.DeleteGv.HeaderText = "Action";
-            this.DeleteGv.Name = "DeleteGv";
-            this.DeleteGv.ReadOnly = true;
-            this.DeleteGv.Text = "Delete";
-            this.DeleteGv.UseColumnTextForButtonValue = true;
             // 
             // PInvAmontPanel
             // 
@@ -310,7 +260,7 @@ namespace ivs.system
             this.PPLbl.Name = "PPLbl";
             this.PPLbl.Size = new System.Drawing.Size(31, 13);
             this.PPLbl.TabIndex = 36;
-            this.PPLbl.Text = "Prize";
+            this.PPLbl.Text = "Price";
             // 
             // BarcodeTxt
             // 
@@ -381,9 +331,9 @@ namespace ivs.system
             this.QtyLbl.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.QtyLbl.Location = new System.Drawing.Point(3, 268);
             this.QtyLbl.Name = "QtyLbl";
-            this.QtyLbl.Size = new System.Drawing.Size(44, 13);
+            this.QtyLbl.Size = new System.Drawing.Size(51, 13);
             this.QtyLbl.TabIndex = 47;
-            this.QtyLbl.Text = "Qautity";
+            this.QtyLbl.Text = "Quantity";
             // 
             // BarErrorLbl
             // 
@@ -433,6 +383,56 @@ namespace ivs.system
             // 
             this.imsDbDataSet1.DataSetName = "imsDbDataSet";
             this.imsDbDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // ProIdGv
+            // 
+            this.ProIdGv.HeaderText = "ID";
+            this.ProIdGv.Name = "ProIdGv";
+            this.ProIdGv.ReadOnly = true;
+            this.ProIdGv.Visible = false;
+            // 
+            // CompNameGv
+            // 
+            this.CompNameGv.HeaderText = "Company";
+            this.CompNameGv.Name = "CompNameGv";
+            this.CompNameGv.ReadOnly = true;
+            // 
+            // ProductGv
+            // 
+            this.ProductGv.HeaderText = "Products";
+            this.ProductGv.Name = "ProductGv";
+            this.ProductGv.ReadOnly = true;
+            // 
+            // PrizePUGv
+            // 
+            this.PrizePUGv.HeaderText = "Price Per Unit";
+            this.PrizePUGv.Name = "PrizePUGv";
+            this.PrizePUGv.ReadOnly = true;
+            // 
+            // QtyGV
+            // 
+            this.QtyGV.HeaderText = "Quantity";
+            this.QtyGV.Name = "QtyGV";
+            this.QtyGV.ReadOnly = true;
+            // 
+            // TotalAmtGv
+            // 
+            this.TotalAmtGv.HeaderText = "Total Amount";
+            this.TotalAmtGv.Name = "TotalAmtGv";
+            this.TotalAmtGv.ReadOnly = true;
+            // 
+            // DeleteGv
+            // 
+            this.DeleteGv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Gray;
+            this.DeleteGv.DefaultCellStyle = dataGridViewCellStyle5;
+            this.DeleteGv.FillWeight = 110F;
+            this.DeleteGv.HeaderText = "Action";
+            this.DeleteGv.Name = "DeleteGv";
+            this.DeleteGv.ReadOnly = true;
+            this.DeleteGv.Text = "Delete";
+            this.DeleteGv.UseColumnTextForButtonValue = true;
             // 
             // PurchuaseInvoice
             // 

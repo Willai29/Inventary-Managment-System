@@ -74,10 +74,6 @@ namespace ivs.system
             // 
             this.rightPanel.Size = new System.Drawing.Size(600, 749);
             // 
-            // WlcUserLbl
-            // 
-            this.WlcUserLbl.Text = "Admin";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -153,9 +149,9 @@ namespace ivs.system
             this.intS.AutoSize = true;
             this.intS.Location = new System.Drawing.Point(7, 363);
             this.intS.Name = "intS";
-            this.intS.Size = new System.Drawing.Size(147, 24);
+            this.intS.Size = new System.Drawing.Size(142, 24);
             this.intS.TabIndex = 9;
-            this.intS.Text = "intergrate security";
+            this.intS.Text = "integrate security";
             this.intS.UseVisualStyleBackColor = true;
             this.intS.CheckedChanged += new System.EventHandler(this.intS_CheckedChange);
             // 
