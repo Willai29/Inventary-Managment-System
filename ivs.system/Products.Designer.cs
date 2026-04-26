@@ -29,8 +29,8 @@ namespace ivs.system
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.StatusDD = new System.Windows.Forms.ComboBox();
             this.StatusErrorLbl = new System.Windows.Forms.Label();
             this.StatusLbl = new System.Windows.Forms.Label();
@@ -64,6 +64,9 @@ namespace ivs.system
             this.ExDateGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QtyGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StsGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DsctTxt = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.LeftPanel.SuspendLayout();
             this.rightPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BackBtn)).BeginInit();
@@ -79,6 +82,9 @@ namespace ivs.system
             // LeftPanel
             // 
             this.LeftPanel.AutoScroll = true;
+            this.LeftPanel.Controls.Add(this.label5);
+            this.LeftPanel.Controls.Add(this.DsctTxt);
+            this.LeftPanel.Controls.Add(this.label4);
             this.LeftPanel.Controls.Add(this.browseBtn);
             this.LeftPanel.Controls.Add(this.productImagePB);
             this.LeftPanel.Controls.Add(this.QtyTxt);
@@ -128,6 +134,9 @@ namespace ivs.system
             this.LeftPanel.Controls.SetChildIndex(this.panel2, 0);
             this.LeftPanel.Controls.SetChildIndex(this.productImagePB, 0);
             this.LeftPanel.Controls.SetChildIndex(this.browseBtn, 0);
+            this.LeftPanel.Controls.SetChildIndex(this.label4, 0);
+            this.LeftPanel.Controls.SetChildIndex(this.DsctTxt, 0);
+            this.LeftPanel.Controls.SetChildIndex(this.label5, 0);
             // 
             // rightPanel
             // 
@@ -150,7 +159,7 @@ namespace ivs.system
             this.StatusDD.Items.AddRange(new object[] {
             "Active",
             "In-Active"});
-            this.StatusDD.Location = new System.Drawing.Point(3, 592);
+            this.StatusDD.Location = new System.Drawing.Point(6, 662);
             this.StatusDD.Name = "StatusDD";
             this.StatusDD.Size = new System.Drawing.Size(194, 28);
             this.StatusDD.TabIndex = 33;
@@ -169,7 +178,7 @@ namespace ivs.system
             // StatusLbl
             // 
             this.StatusLbl.AutoSize = true;
-            this.StatusLbl.Location = new System.Drawing.Point(3, 569);
+            this.StatusLbl.Location = new System.Drawing.Point(4, 639);
             this.StatusLbl.Name = "StatusLbl";
             this.StatusLbl.Size = new System.Drawing.Size(49, 20);
             this.StatusLbl.TabIndex = 38;
@@ -324,14 +333,14 @@ namespace ivs.system
             this.Product_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Product_dataGridView.BackgroundColor = System.Drawing.Color.White;
             this.Product_dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Product_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Product_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.Product_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Product_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IdGv,
@@ -343,14 +352,14 @@ namespace ivs.system
             this.ExDateGv,
             this.QtyGv,
             this.StsGv});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GrayText;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Product_dataGridView.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GrayText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Product_dataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.Product_dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Product_dataGridView.Location = new System.Drawing.Point(0, 106);
             this.Product_dataGridView.Name = "Product_dataGridView";
@@ -472,6 +481,33 @@ namespace ivs.system
             this.StsGv.Name = "StsGv";
             this.StsGv.ReadOnly = true;
             // 
+            // DsctTxt
+            // 
+            this.DsctTxt.Location = new System.Drawing.Point(3, 597);
+            this.DsctTxt.Name = "DsctTxt";
+            this.DsctTxt.Size = new System.Drawing.Size(199, 27);
+            this.DsctTxt.TabIndex = 7;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Crimson;
+            this.label4.Location = new System.Drawing.Point(182, 627);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(15, 20);
+            this.label4.TabIndex = 51;
+            this.label4.Text = "*";
+            this.label4.Visible = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(2, 574);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(85, 20);
+            this.label5.TabIndex = 52;
+            this.label5.Text = "Description";
+            // 
             // Products
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -529,5 +565,8 @@ namespace ivs.system
         private System.Windows.Forms.DataGridViewTextBoxColumn ExDateGv;
         private System.Windows.Forms.DataGridViewTextBoxColumn QtyGv;
         private System.Windows.Forms.DataGridViewTextBoxColumn StsGv;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox DsctTxt;
+        private System.Windows.Forms.Label label4;
     }
 }

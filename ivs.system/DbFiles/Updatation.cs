@@ -57,7 +57,7 @@ namespace ivs.system.DbFiles
 
             }
         }
-        public void updateProduct(int id, string barcode, string name, int catId, float price, Int16 sts, int quantity, string imagePath = "", byte[] existingImage = null, DateTime? exDate = null)
+        public void updateProduct(int id, string barcode, string name, int catId, float price, Int16 sts, int quantity, string imagePath = "", byte[] existingImage = null, DateTime? exDate = null, string description = "")
         {
             try
             {
@@ -81,6 +81,16 @@ namespace ivs.system.DbFiles
 
                 cmd.Parameters.AddWithValue("@Status", sts);
                 cmd.Parameters.AddWithValue("@Quantity", quantity);
+
+                // ✅ ADDED DESCRIPTION
+                if (!string.IsNullOrWhiteSpace(description))
+                {
+                    cmd.Parameters.AddWithValue("@Description", description);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@Description", DBNull.Value);
+                }
 
                 byte[] img = existingImage;
 

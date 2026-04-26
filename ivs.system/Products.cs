@@ -102,7 +102,8 @@ namespace ivs.system
                             Stat,
                             Convert.ToInt32(QtyTxt.Value),
                             imagePath,
-                            ExDatePickerTxt.Value
+                            ExDatePickerTxt.Value,
+                            DsctTxt.Text
                         );
                     }
                     else
@@ -114,7 +115,9 @@ namespace ivs.system
                             Convert.ToSingle(PPrizeTxt.Text),
                             Stat,
                             Convert.ToInt32(QtyTxt.Value),
-                            imagePath
+                            imagePath,
+                            null,
+                            DsctTxt.Text
                         );
                     }
                 }
@@ -137,7 +140,8 @@ namespace ivs.system
                                 Convert.ToInt32(QtyTxt.Value),
                                 imagePath,
                                 currentImage,
-                                ExDatePickerTxt.Value
+                                ExDatePickerTxt.Value,
+                                DsctTxt.Text
                             );
                         }
                         else
@@ -151,7 +155,9 @@ namespace ivs.system
                                 Stat,
                                 Convert.ToInt32(QtyTxt.Value),
                                 imagePath,
-                                currentImage
+                                currentImage,
+                                null,
+                                DsctTxt.Text
                             );
                         }
                     }

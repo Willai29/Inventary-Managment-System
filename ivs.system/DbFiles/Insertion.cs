@@ -62,7 +62,18 @@ namespace ivs.system
             }
         }
 
-        public void insertProduct(string barcode, string name, int catId, float price, Int16 sts, int quantity, string imagePath = "", DateTime? exDate = null)
+        // ✅ UPDATED: Added Description WITHOUT breaking your existing calls
+        public void insertProduct(
+            string barcode,
+            string name,
+            int catId,
+            float price,
+            Int16 sts,
+            int quantity,
+            string imagePath = "",
+            DateTime? exDate = null,
+            string description = ""
+        )
         {
             try
             {
@@ -85,6 +96,16 @@ namespace ivs.system
 
                 cmd.Parameters.AddWithValue("@Status", sts);
                 cmd.Parameters.AddWithValue("@Quantity", quantity);
+
+                // ✅ NEW: Description (SAFE ADD)
+                if (!string.IsNullOrWhiteSpace(description))
+                {
+                    cmd.Parameters.AddWithValue("@Description", description);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@Description", DBNull.Value);
+                }
 
                 byte[] img = null;
 
