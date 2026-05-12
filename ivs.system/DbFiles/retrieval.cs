@@ -176,8 +176,8 @@ namespace ivs.system.DbFiles
                 DataTable tb = new DataTable();
                 da.Fill(tb);
 
-                IdGv.DataPropertyName = "ID";
-                NameGv.DataPropertyName = "Name";
+                IdGv.DataPropertyName = "CatID";
+                NameGv.DataPropertyName = "Category";
                 StsGv.DataPropertyName = "Status";
 
                 gv.DataSource = tb;
@@ -212,7 +212,7 @@ namespace ivs.system.DbFiles
                 BarchorGv.DataPropertyName = "Barcode";
                 NameGv.DataPropertyName = "Name";
                 CatIDGV.DataPropertyName = "CatId";
-                CatNameGv.DataPropertyName = "CatName";
+                CatNameGv.DataPropertyName = "Category";
                 PrizeGv.DataPropertyName = "Price";
                 ExDateGv.DataPropertyName = "ExpiryDate";
                 QtyGv.DataPropertyName = "Quantity";

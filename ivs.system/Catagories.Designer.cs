@@ -169,6 +169,7 @@ namespace ivs.system
             // 
             // IdGv
             // 
+            this.IdGv.DataPropertyName = "CatID";
             this.IdGv.HeaderText = "ID";
             this.IdGv.Name = "IdGv";
             this.IdGv.ReadOnly = true;
@@ -176,15 +177,18 @@ namespace ivs.system
             // 
             // NameGv
             // 
+            this.NameGv.DataPropertyName = "Category";
             this.NameGv.HeaderText = "Category Name";
             this.NameGv.Name = "NameGv";
             this.NameGv.ReadOnly = true;
             // 
             // StsGv
             // 
+            this.StsGv.DataPropertyName = "Status";
             this.StsGv.HeaderText = "Status";
             this.StsGv.Name = "StsGv";
             this.StsGv.ReadOnly = true;
+            this.StsGv.Visible = false;
             // 
             // Catagories
             // 

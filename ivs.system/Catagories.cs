@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace ivs.system
 {
@@ -34,6 +35,7 @@ namespace ivs.system
         private void Catagories_Load(object sender, EventArgs e)
         {
             Mainclass.disable(LeftPanel);
+            Cat_dataGridView.AutoGenerateColumns = false;
 
             // ✅ ADDED: Automatically display categories when the form opens
             re.showCat(Cat_dataGridView, IdGv, NameGv, StsGv);

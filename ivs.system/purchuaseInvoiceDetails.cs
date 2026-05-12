@@ -122,7 +122,7 @@ namespace ivs.system
 
         public override void BackBtn_Click(object sender, EventArgs e)
         {
-            PurchuaseInvoice hs = new PurchuaseInvoice();
+            HomeScreen hs = new HomeScreen();
             Mainclass.showWindow(hs, this, MDI.ActiveForm);
         }
     }
