@@ -63,20 +63,11 @@ namespace ivs.system
         }
 
         // ✅ UPDATED: Added Description WITHOUT breaking your existing calls
-        public void insertProduct(
-            string barcode,
-            string name,
-            int catId,
-            float price,
-            Int16 sts,
-            int quantity,
-            string imagePath = "",
-            DateTime? exDate = null,
-            string description = ""
-        )
+        public void insertProduct(string barcode, string name, int catId, float price, Int16 sts, int quantity, string imagePath, DateTime? exDate, string description)
         {
             try
             {
+                // Ensure the name here matches the Stored Procedure in your SQL
                 SqlCommand cmd = new SqlCommand("st_insertProducts", Mainclass.con);
                 cmd.CommandType = CommandType.StoredProcedure;
 
@@ -84,38 +75,35 @@ namespace ivs.system
                 cmd.Parameters.AddWithValue("@Name", name);
                 cmd.Parameters.AddWithValue("@CatId", catId);
                 cmd.Parameters.AddWithValue("@Price", price);
+                cmd.Parameters.AddWithValue("@Status", sts);
 
-                if (exDate != null)
-                {
-                    cmd.Parameters.AddWithValue("@ExpiryDate", exDate);
-                }
-                else
+                // This parameter updates the initial stock in the Stocks table
+                cmd.Parameters.AddWithValue("@Quantity", quantity);
+
+                // Handling Nullable Expiry Date
+                if (exDate == null)
                 {
                     cmd.Parameters.AddWithValue("@ExpiryDate", DBNull.Value);
                 }
-
-                cmd.Parameters.AddWithValue("@Status", sts);
-                cmd.Parameters.AddWithValue("@Quantity", quantity);
-
-                // ✅ NEW: Description (SAFE ADD)
-                if (!string.IsNullOrWhiteSpace(description))
-                {
-                    cmd.Parameters.AddWithValue("@Description", description);
-                }
                 else
+                {
+                    cmd.Parameters.AddWithValue("@ExpiryDate", exDate);
+                }
+
+                // Handling Description
+                if (string.IsNullOrEmpty(description))
                 {
                     cmd.Parameters.AddWithValue("@Description", DBNull.Value);
                 }
-
-                byte[] img = null;
-
-                if (!string.IsNullOrWhiteSpace(imagePath) && File.Exists(imagePath))
+                else
                 {
-                    img = File.ReadAllBytes(imagePath);
+                    cmd.Parameters.AddWithValue("@Description", description);
                 }
 
-                if (img != null)
+                // Handling Image conversion to Byte Array
+                if (!string.IsNullOrEmpty(imagePath) && File.Exists(imagePath))
                 {
+                    byte[] img = File.ReadAllBytes(imagePath);
                     cmd.Parameters.AddWithValue("@ProductImage", img);
                 }
                 else
@@ -127,7 +115,7 @@ namespace ivs.system
                 cmd.ExecuteNonQuery();
                 Mainclass.con.Close();
 
-                Mainclass.showMsg("Insert successfully", "Success", "success");
+                Mainclass.showMsg(name + " added to the system successfully.", "Success", "Success");
             }
             catch (Exception ex)
             {
@@ -135,11 +123,9 @@ namespace ivs.system
                 {
                     Mainclass.con.Close();
                 }
-
-                Mainclass.showMsg(ex.Message, "Exception Error", "Error");
+                Mainclass.showMsg(ex.Message, "Error", "Error");
             }
         }
-
         public void insertSuppliers(string Company, string Employee, string Address, int phone1, Int16 sts, int? phone2 = null, string NTN = null)
         {
             try

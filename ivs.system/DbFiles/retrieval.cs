@@ -357,36 +357,33 @@ namespace ivs.system.DbFiles
             return ProQtyCount;
         }
 
-        public void showStocks(DataGridView gv, DataGridViewColumn stkIdGv, DataGridViewColumn ProIdGv, DataGridViewColumn BarcodeGv, DataGridViewColumn Catgoery, DataGridViewColumn ProductGv, DataGridViewColumn PrizeGv, DataGridViewColumn QtyGv, DataGridViewColumn TotalAmountGv, DataGridViewColumn ExdateGv, DataGridViewColumn StsGv)
+        public void showStocks(DataGridView gv, DataGridViewColumn stkIdGv, DataGridViewColumn ProIdGv, DataGridViewColumn BarcodeGv, DataGridViewColumn CatgoeryGv, DataGridViewColumn ProductGv, DataGridViewColumn PrizeGv, DataGridViewColumn QtyGv, DataGridViewColumn TotalAmountGv, DataGridViewColumn ExdateGv, DataGridViewColumn StsGv)
         {
-            SqlCommand cmd;
             try
             {
-                cmd = new SqlCommand("st_GetStocksData", Mainclass.con);
+                SqlCommand cmd = new SqlCommand("st_GetStocksData", Mainclass.con);
                 cmd.CommandType = CommandType.StoredProcedure;
-
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable tb = new DataTable();
                 da.Fill(tb);
 
-                stkIdGv.DataPropertyName = "stk_Id";
-                ProIdGv.DataPropertyName = "ProId";
-                ProductGv.DataPropertyName = "Product";
-                PrizeGv.DataPropertyName = "Prize";
-                QtyGv.DataPropertyName = "Qty";
-                TotalAmountGv.DataPropertyName = "Total Amount";
+                // MAP THESE EXACTLY
+                stkIdGv.DataPropertyName = "StockID";
+                ProIdGv.DataPropertyName = "Id";
                 BarcodeGv.DataPropertyName = "Barcode";
-                Catgoery.DataPropertyName = "Catgory";
-                ExdateGv.DataPropertyName = "ExDate";
+                CatgoeryGv.DataPropertyName = "Category";
+                ProductGv.DataPropertyName = "ProductName";   // Fixed
+                PrizeGv.DataPropertyName = "Price";
+                QtyGv.DataPropertyName = "Quantity";        // Fixed
+                TotalAmountGv.DataPropertyName = "TotalAmount"; // Fixed
+                ExdateGv.DataPropertyName = "ExpiryDate";
                 StsGv.DataPropertyName = "Status";
 
-                gv.AutoGenerateColumns = false;
-                gv.DataSource = null;
                 gv.DataSource = tb;
             }
             catch (Exception ex)
             {
-                Mainclass.showMsg(ex.Message, "Error ...", "Error");
+                Mainclass.showMsg(ex.Message, "Error", "Error");
             }
         }
 

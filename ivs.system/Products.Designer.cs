@@ -55,6 +55,9 @@ namespace ivs.system
             this.QtyTxt = new System.Windows.Forms.NumericUpDown();
             this.productImagePB = new System.Windows.Forms.PictureBox();
             this.browseBtn = new System.Windows.Forms.Button();
+            this.DsctTxt = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.IdGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BarchorGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,9 +67,6 @@ namespace ivs.system
             this.ExDateGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QtyGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StsGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DsctTxt = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.LeftPanel.SuspendLayout();
             this.rightPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BackBtn)).BeginInit();
@@ -425,6 +425,33 @@ namespace ivs.system
             this.browseBtn.UseVisualStyleBackColor = false;
             this.browseBtn.Click += new System.EventHandler(this.browseBtn_Click);
             // 
+            // DsctTxt
+            // 
+            this.DsctTxt.Location = new System.Drawing.Point(3, 597);
+            this.DsctTxt.Name = "DsctTxt";
+            this.DsctTxt.Size = new System.Drawing.Size(199, 27);
+            this.DsctTxt.TabIndex = 7;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Crimson;
+            this.label4.Location = new System.Drawing.Point(182, 627);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(15, 20);
+            this.label4.TabIndex = 51;
+            this.label4.Text = "*";
+            this.label4.Visible = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(2, 574);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(85, 20);
+            this.label5.TabIndex = 52;
+            this.label5.Text = "Description";
+            // 
             // IdGv
             // 
             this.IdGv.HeaderText = "ID";
@@ -480,33 +507,7 @@ namespace ivs.system
             this.StsGv.HeaderText = "Status";
             this.StsGv.Name = "StsGv";
             this.StsGv.ReadOnly = true;
-            // 
-            // DsctTxt
-            // 
-            this.DsctTxt.Location = new System.Drawing.Point(3, 597);
-            this.DsctTxt.Name = "DsctTxt";
-            this.DsctTxt.Size = new System.Drawing.Size(199, 27);
-            this.DsctTxt.TabIndex = 7;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.Crimson;
-            this.label4.Location = new System.Drawing.Point(182, 627);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(15, 20);
-            this.label4.TabIndex = 51;
-            this.label4.Text = "*";
-            this.label4.Visible = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(2, 574);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(85, 20);
-            this.label5.TabIndex = 52;
-            this.label5.Text = "Description";
+            this.StsGv.Visible = false;
             // 
             // Products
             // 
@@ -556,6 +557,9 @@ namespace ivs.system
         private System.Windows.Forms.NumericUpDown QtyTxt;
         private System.Windows.Forms.Button browseBtn;
         private System.Windows.Forms.PictureBox productImagePB;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox DsctTxt;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdGv;
         private System.Windows.Forms.DataGridViewTextBoxColumn BarchorGv;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameGv;
@@ -565,8 +569,5 @@ namespace ivs.system
         private System.Windows.Forms.DataGridViewTextBoxColumn ExDateGv;
         private System.Windows.Forms.DataGridViewTextBoxColumn QtyGv;
         private System.Windows.Forms.DataGridViewTextBoxColumn StsGv;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox DsctTxt;
-        private System.Windows.Forms.Label label4;
     }
 }

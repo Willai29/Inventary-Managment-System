@@ -30,23 +30,30 @@ namespace ivs.system
                 DataTable tb = new DataTable();
                 da.Fill(tb);
 
+                // ALIGNED: Mapping to match your dbo.PurchaseInvoiceDetails table structure
                 PurInvDtlIdGv.DataPropertyName = "InvoiceID";
-                ProIdGv.DataPropertyName = "OrderID";
-                ProductGv.DataPropertyName = "Products";
-                PrizePrUntGv.DataPropertyName = "Prize Per Unit";
+                ProIdGv.DataPropertyName = "ProductID";
+                ProductGv.DataPropertyName = "ProductName";
+                PrizePrUntGv.DataPropertyName = "Price";
                 QtyGv.DataPropertyName = "Quantity";
-                TotalAmtGv.DataPropertyName = "Total Amount";
+                TotalAmtGv.DataPropertyName = "TotalAmount";
 
                 PurInvDetail_dataGridView.AutoGenerateColumns = false;
                 PurInvDetail_dataGridView.DataSource = null;
                 PurInvDetail_dataGridView.DataSource = tb;
 
+                // FIXED: Safe calculation for the Gross Amount
                 float Gt = 0;
                 foreach (DataGridViewRow row in PurInvDetail_dataGridView.Rows)
                 {
-                    if (row.Cells["TotalAmtGv"].Value != null)
+                    // Added !row.IsNewRow to prevent "Input string was not in a correct format" error
+                    if (!row.IsNewRow && row.Cells["TotalAmtGv"].Value != null)
                     {
-                        Gt += Convert.ToSingle(row.Cells["TotalAmtGv"].Value.ToString());
+                        float val = 0;
+                        if (float.TryParse(row.Cells["TotalAmtGv"].Value.ToString(), out val))
+                        {
+                            Gt += val;
+                        }
                     }
                 }
 
@@ -68,13 +75,21 @@ namespace ivs.system
             if (CompanyDD.SelectedIndex != -1 && CompanyDD.SelectedIndex != 0)
             {
                 re.showPurInvDetailWRTPurID(Convert.ToInt64(CompanyDD.SelectedValue), PurInvDetail_dataGridView, PurInvDtlIdGv, ProIdGv, ProductGv, PrizePrUntGv, QtyGv, TotalAmtGv);
+
                 float Gt = 0;
                 foreach (DataGridViewRow row in PurInvDetail_dataGridView.Rows)
                 {
-                    Gt += Convert.ToSingle(row.Cells["TotalAmtGv"].Value.ToString());
+                    // FIXED: Safe calculation for SelectedIndexChanged
+                    if (!row.IsNewRow && row.Cells["TotalAmtGv"].Value != null)
+                    {
+                        float val = 0;
+                        if (float.TryParse(row.Cells["TotalAmtGv"].Value.ToString(), out val))
+                        {
+                            Gt += val;
+                        }
+                    }
                 }
                 GrossAmtPrzTxt.Text = Gt.ToString();
-                Gt = 0;
             }
         }
 
@@ -87,35 +102,57 @@ namespace ivs.system
         {
             if (e.RowIndex != -1 && e.ColumnIndex != -1)
             {
-                if (e.ColumnIndex == 0)
+                if (e.ColumnIndex == 0) // Action/Delete Button
                 {
                     int q;
-                    DialogResult dr = MessageBox.Show("Are you sure?", "Caption", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                    DialogResult dr = MessageBox.Show("Are you sure?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (dr == DialogResult.Yes)
                     {
                         using (TransactionScope Trsc = new TransactionScope())
                         {
-                            DataGridViewRow rows = PurInvDetail_dataGridView.Rows[e.RowIndex];
-                            object ob = re.GetProductStockQuatity(Convert.ToInt32(rows.Cells["ProIdGv"].Value.ToString()));
-                            if (ob != null)
+                            try
                             {
-                                q = Convert.ToInt32(ob);
-                                q -= Convert.ToInt32(rows.Cells["QtyGV"].Value.ToString());
-                                u.updateStock(Convert.ToInt32(rows.Cells["ProIdGv"].Value.ToString()), q);
-                                i.insertDelItemTranck(Convert.ToInt64(CompanyDD.SelectedValue), Convert.ToInt32(rows.Cells["ProIdGv"].Value.ToString()), q, DateTime.Today);
-                                d.deleting(Convert.ToInt64(rows.Cells["PurInvDtlIdGv"].Value.ToString()), "st_deletePurInvDtlsWTRPvdId", "@id");
-                                float tt = Convert.ToSingle(rows.Cells["TotalAmtGv"].Value.ToString());
-                                float tot = Convert.ToSingle(GrossAmtPrzTxt.Text) - tt;
-                                GrossAmtPrzTxt.Text = tot.ToString();
-                                PurInvDetail_dataGridView.Rows.Remove(rows);
+                                DataGridViewRow rows = PurInvDetail_dataGridView.Rows[e.RowIndex];
+
+                                // FIXED: Using standardized ProIdGv and checking for null
+                                if (rows.Cells["ProIdGv"].Value == null) return;
+
+                                object ob = re.GetProductStockQuatity(Convert.ToInt32(rows.Cells["ProIdGv"].Value.ToString()));
+                                if (ob != null)
+                                {
+                                    q = Convert.ToInt32(ob);
+
+                                    // FIXED: Standardized to QtyGv
+                                    q -= Convert.ToInt32(rows.Cells["QtyGv"].Value.ToString());
+
+                                    u.updateStock(Convert.ToInt32(rows.Cells["ProIdGv"].Value.ToString()), q);
+                                    i.insertDelItemTranck(Convert.ToInt64(CompanyDD.SelectedValue), Convert.ToInt32(rows.Cells["ProIdGv"].Value.ToString()), q, DateTime.Today);
+                                    d.deleting(Convert.ToInt64(rows.Cells["PurInvDtlIdGv"].Value.ToString()), "st_deletePurInvDtlsWTRPvdId", "@id");
+
+                                    // FIXED: Safe parsing for amount subtraction
+                                    float tt = 0;
+                                    float.TryParse(rows.Cells["TotalAmtGv"].Value.ToString(), out tt);
+
+                                    float currentGross = 0;
+                                    float.TryParse(GrossAmtPrzTxt.Text, out currentGross);
+
+                                    float tot = currentGross - tt;
+                                    GrossAmtPrzTxt.Text = tot.ToString();
+
+                                    PurInvDetail_dataGridView.Rows.Remove(rows);
+                                }
+                                Trsc.Complete();
                             }
-                            Trsc.Complete();
+                            catch (Exception ex)
+                            {
+                                Mainclass.showMsg(ex.Message, "Error", "Error");
+                            }
                         }
                     }
                 }
                 else
                 {
-                    Mainclass.showMsg(e.ColumnIndex.ToString(), "eror ", "Error");
+                    Mainclass.showMsg("Column: " + e.ColumnIndex.ToString(), "Info", "Info");
                 }
             }
         }

@@ -100,10 +100,6 @@ namespace ivs.system
             this.rightPanel.Size = new System.Drawing.Size(600, 707);
             this.rightPanel.Controls.SetChildIndex(this.UserdataGridView1, 0);
             // 
-            // WlcUserLbl
-            // 
-            this.WlcUserLbl.Text = "Admin";
-            // 
             // NameLbl
             // 
             this.NameLbl.AutoSize = true;
@@ -325,6 +321,7 @@ namespace ivs.system
             this.U_StsGv.HeaderText = "Status";
             this.U_StsGv.Name = "U_StsGv";
             this.U_StsGv.ReadOnly = true;
+            this.U_StsGv.Visible = false;
             // 
             // Users
             // 

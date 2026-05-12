@@ -222,6 +222,7 @@ namespace ivs.system
             this.StatusGv.ReadOnly = true;
             this.StatusGv.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.StatusGv.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.StatusGv.Visible = false;
             // 
             // Stocks
             // 

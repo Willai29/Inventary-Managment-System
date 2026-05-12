@@ -19,25 +19,29 @@ namespace ivs.system
 
         public override void viewBtn_Click(object sender, EventArgs e)
         {
+            // Load the data into the grid first
             re.showStocks(Stocks_dataGridView, stkdGv, ProIdGv, BarcodeGv, CatgoeryGv, ProductGv, PrizePrUntGv, QtyGv, TotalAmtGv, ExDateGv, StatusGv);
 
-            float gt = 0;
+            double grandTotal = 0;
 
             foreach (DataGridViewRow row in Stocks_dataGridView.Rows)
             {
+                // Skip the empty "new row" at the bottom of the grid
                 if (row.IsNewRow) continue;
 
+                // Ensure the Total Amount cell is not empty
                 if (row.Cells["TotalAmtGv"].Value != null && row.Cells["TotalAmtGv"].Value != DBNull.Value)
                 {
-                    float value;
-                    if (float.TryParse(row.Cells["TotalAmtGv"].Value.ToString(), out value))
+                    double rowAmount;
+                    if (double.TryParse(row.Cells["TotalAmtGv"].Value.ToString(), out rowAmount))
                     {
-                        gt += value;
+                        grandTotal += rowAmount;
                     }
                 }
             }
 
-            GrossAmtPrzTxt.Text = gt.ToString("0.00");
+            // Display with comma separators and two decimal places
+            GrossAmtPrzTxt.Text = grandTotal.ToString("N2");
         }
     }
 }
