@@ -181,6 +181,7 @@ namespace ivs.system
             // 
             // ProductGv
             // 
+            this.ProductGv.DataPropertyName = "Name";
             this.ProductGv.HeaderText = "Product";
             this.ProductGv.Name = "ProductGv";
             this.ProductGv.ReadOnly = true;

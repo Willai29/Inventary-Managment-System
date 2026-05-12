@@ -15,6 +15,7 @@ namespace ivs.system
 
         private void Stocks_Load(object sender, EventArgs e)
         {
+            Stocks_dataGridView.AutoGenerateColumns = false;
         }
 
         public override void viewBtn_Click(object sender, EventArgs e)

@@ -42,6 +42,7 @@ namespace ivs.system
 
         public override void SaveBtn_Click(object sender, EventArgs e)
         {
+            // Validation Logic
             if (BrTxt.Text == "") { BrErrorLbl.Visible = true; } else { BrErrorLbl.Visible = false; }
             if (PNameTxt.Text == "") { PNameErrorLbl.Visible = true; } else { PNameErrorLbl.Visible = false; }
             if (CatIdDD.Text == "") { CatIdDDErrorLbl.Visible = true; } else { CatIdDDErrorLbl.Visible = false; }
@@ -69,9 +70,7 @@ namespace ivs.system
             else
             {
                 StatusErrorLbl.Visible = false;
-
                 string statusText = StatusDD.Text.Trim().ToLower();
-
                 if (statusText == "active")
                 {
                     Stat = 1;
@@ -84,11 +83,11 @@ namespace ivs.system
 
             if (BrErrorLbl.Visible || PNameErrorLbl.Visible || StatusErrorLbl.Visible || CatIdDDErrorLbl.Visible || PPrizeErrorLbl.Visible || ExDatePickerErrorLbl.Visible)
             {
-                Mainclass.showMsg("All Filed is required", "Caption", "Error");
+                Mainclass.showMsg("All Fields are required", "Caption", "Error");
             }
             else
             {
-                if (edit == 0)
+                if (edit == 0) // Insert Logic
                 {
                     Insertion i = new Insertion();
 
@@ -121,9 +120,9 @@ namespace ivs.system
                         );
                     }
                 }
-                else if (edit == 1)
+                else if (edit == 1) // Update Logic
                 {
-                    DialogResult dr = MessageBox.Show("Are you sure Update your record", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult dr = MessageBox.Show("Are you sure you want to update your record?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (dr == DialogResult.Yes)
                     {
                         Updatation u = new Updatation();
@@ -163,22 +162,22 @@ namespace ivs.system
                     }
                 }
 
-                re.showProducts(Product_dataGridView, IdGv, BarchorGv, NameGv, CatIDGV, CatNameGv, PrizeGv, QtyGv, ExDateGv, StsGv);
+                // Data Refresh with ProductGv
+                re.showProducts(Product_dataGridView, IdGv, BarchorGv, ProductGv, CatIDGV, CatNameGv, PrizeGv, QtyGv, ExDateGv, StsGv);
+                Mainclass.disable_reset(LeftPanel);
             }
-
-            Mainclass.disable_reset(LeftPanel);
         }
 
         public override void DelBtn_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Are you sure Delect your record", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult dr = MessageBox.Show("Are you sure you want to delete your record?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
                 Deletion delRecord = new Deletion();
                 delRecord.deleting(ProID, "st_DeleteProduct", "@Id");
             }
 
-            re.showProducts(Product_dataGridView, IdGv, BarchorGv, NameGv, CatIDGV, CatNameGv, PrizeGv, QtyGv, ExDateGv, StsGv);
+            re.showProducts(Product_dataGridView, IdGv, BarchorGv, ProductGv, CatIDGV, CatNameGv, PrizeGv, QtyGv, ExDateGv, StsGv);
             Mainclass.disable(LeftPanel);
         }
 
@@ -190,7 +189,7 @@ namespace ivs.system
 
         public override void viewBtn_Click(object sender, EventArgs e)
         {
-            re.showProducts(Product_dataGridView, IdGv, BarchorGv, NameGv, CatIDGV, CatNameGv, PrizeGv, QtyGv, ExDateGv, StsGv);
+            re.showProducts(Product_dataGridView, IdGv, BarchorGv, ProductGv, CatIDGV, CatNameGv, PrizeGv, QtyGv, ExDateGv, StsGv);
             Mainclass.disable_reset(LeftPanel);
         }
 
@@ -198,11 +197,11 @@ namespace ivs.system
         {
             if (searchtxt.Text != "")
             {
-                re.showProducts(Product_dataGridView, IdGv, BarchorGv, NameGv, CatIDGV, CatNameGv, PrizeGv, QtyGv, ExDateGv, StsGv, searchtxt.Text);
+                re.showProducts(Product_dataGridView, IdGv, BarchorGv, ProductGv, CatIDGV, CatNameGv, PrizeGv, QtyGv, ExDateGv, StsGv, searchtxt.Text);
             }
             else
             {
-                re.showProducts(Product_dataGridView, IdGv, BarchorGv, NameGv, CatIDGV, CatNameGv, PrizeGv, QtyGv, ExDateGv, StsGv);
+                re.showProducts(Product_dataGridView, IdGv, BarchorGv, ProductGv, CatIDGV, CatNameGv, PrizeGv, QtyGv, ExDateGv, StsGv);
             }
         }
 
@@ -217,9 +216,10 @@ namespace ivs.system
                     ProID = Convert.ToInt32(row.Cells["IdGv"].Value);
                 }
 
-                PNameTxt.Text = row.Cells["NameGv"].Value == null || row.Cells["NameGv"].Value == DBNull.Value
+                // Cell Selection logic updated to use ProductGv
+                PNameTxt.Text = row.Cells["ProductGv"].Value == null || row.Cells["ProductGv"].Value == DBNull.Value
                     ? ""
-                    : row.Cells["NameGv"].Value.ToString();
+                    : row.Cells["ProductGv"].Value.ToString();
 
                 BrTxt.Text = row.Cells["BarchorGv"].Value == null || row.Cells["BarchorGv"].Value == DBNull.Value
                     ? ""
@@ -255,7 +255,6 @@ namespace ivs.system
                 if (row.Cells["StsGv"].Value != null && row.Cells["StsGv"].Value != DBNull.Value)
                 {
                     string statusText = row.Cells["StsGv"].Value.ToString().Trim().ToLower();
-
                     if (statusText == "active")
                     {
                         StatusDD.SelectedIndex = 0;
@@ -273,7 +272,6 @@ namespace ivs.system
                 imagePath = "";
                 LoadProductImageById(ProID);
             }
-
             Mainclass.disable(LeftPanel);
         }
 
@@ -294,7 +292,6 @@ namespace ivs.system
                 if (result != null && result != DBNull.Value)
                 {
                     currentImage = (byte[])result;
-
                     using (MemoryStream ms = new MemoryStream(currentImage))
                     {
                         productImagePB.Image = Image.FromStream(ms);

@@ -188,7 +188,7 @@ namespace ivs.system.DbFiles
             }
         }
 
-        public void showProducts(DataGridView gv, DataGridViewColumn IdGv, DataGridViewColumn BarchorGv, DataGridViewColumn NameGv, DataGridViewColumn CatIDGV, DataGridViewColumn CatNameGv, DataGridViewColumn PrizeGv, DataGridViewColumn QtyGv, DataGridViewColumn ExDateGv, DataGridViewColumn StsGv, string data = null)
+        public void showProducts(DataGridView gv, DataGridViewColumn IdGv, DataGridViewColumn BarchorGv, DataGridViewColumn ProductGv, DataGridViewColumn CatIDGV, DataGridViewColumn CatNameGv, DataGridViewColumn PrizeGv, DataGridViewColumn QtyGv, DataGridViewColumn ExDateGv, DataGridViewColumn StsGv, string data = null)
         {
             SqlCommand cmd;
             try
@@ -210,7 +210,7 @@ namespace ivs.system.DbFiles
 
                 IdGv.DataPropertyName = "Id";
                 BarchorGv.DataPropertyName = "Barcode";
-                NameGv.DataPropertyName = "Name";
+                ProductGv.DataPropertyName = "Name";
                 CatIDGV.DataPropertyName = "CatId";
                 CatNameGv.DataPropertyName = "Category";
                 PrizeGv.DataPropertyName = "Price";
@@ -372,7 +372,7 @@ namespace ivs.system.DbFiles
                 ProIdGv.DataPropertyName = "Id";
                 BarcodeGv.DataPropertyName = "Barcode";
                 CatgoeryGv.DataPropertyName = "Category";
-                ProductGv.DataPropertyName = "ProductName";   // Fixed
+                ProductGv.DataPropertyName = "Product";   // Fixed
                 PrizeGv.DataPropertyName = "Price";
                 QtyGv.DataPropertyName = "Quantity";        // Fixed
                 TotalAmountGv.DataPropertyName = "TotalAmount"; // Fixed

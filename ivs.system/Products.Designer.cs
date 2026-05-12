@@ -60,7 +60,7 @@ namespace ivs.system
             this.label5 = new System.Windows.Forms.Label();
             this.IdGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BarchorGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CatIDGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CatNameGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrizeGv = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -345,7 +345,7 @@ namespace ivs.system
             this.Product_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IdGv,
             this.BarchorGv,
-            this.NameGv,
+            this.ProductGv,
             this.CatIDGV,
             this.CatNameGv,
             this.PrizeGv,
@@ -465,11 +465,11 @@ namespace ivs.system
             this.BarchorGv.Name = "BarchorGv";
             this.BarchorGv.ReadOnly = true;
             // 
-            // NameGv
+            // ProductGv
             // 
-            this.NameGv.HeaderText = "Product Name";
-            this.NameGv.Name = "NameGv";
-            this.NameGv.ReadOnly = true;
+            this.ProductGv.HeaderText = "Product Name";
+            this.ProductGv.Name = "ProductGv";
+            this.ProductGv.ReadOnly = true;
             // 
             // CatIDGV
             // 
@@ -562,7 +562,7 @@ namespace ivs.system
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdGv;
         private System.Windows.Forms.DataGridViewTextBoxColumn BarchorGv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NameGv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductGv;
         private System.Windows.Forms.DataGridViewTextBoxColumn CatIDGV;
         private System.Windows.Forms.DataGridViewTextBoxColumn CatNameGv;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrizeGv;
